@@ -1,0 +1,125 @@
+.footerSection {
+  padding: clamp(4rem, 8vw, 5.5rem) clamp(1.5rem, 4vw, 4rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footerInner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.brandBlock {
+  display: grid;
+  gap: 1rem;
+}
+
+.brandTitle {
+  margin: 0;
+  font-size: 2rem;
+  font-family: var(--font-serif), Georgia, serif;
+  color: #fff;
+}
+
+.brandText {
+  margin: 0;
+  color: #d1cab8;
+  line-height: 1.9;
+  max-width: 34rem;
+}
+
+.brandNote {
+  margin: 1rem 0 0;
+  color: #b8ac8e;
+  max-width: 32rem;
+  line-height: 1.8;
+}
+
+.linksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.linkHeading {
+  margin: 0 0 1rem;
+  color: var(--gold-soft);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+}
+
+.linksGrid a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #f4f4f4;
+  margin-bottom: 0.9rem;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.linksGrid a:hover,
+.linksGrid a:focus-visible {
+  color: var(--gold-soft);
+}
+
+.socialBlock {
+  display: grid;
+  gap: 1rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLinks a {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f4f4f4;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.socialLinks a:hover,
+.socialLinks a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(201, 169, 98, 0.14);
+}
+
+.footerBottom {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.75rem;
+  text-align: center;
+  color: #a99f7e;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 980px) {
+  .footerInner {
+    grid-template-columns: 1fr;
+  }
+
+  .linksGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .footerSection {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .linksGrid {
+    grid-template-columns: 1fr;
+  }
+}
