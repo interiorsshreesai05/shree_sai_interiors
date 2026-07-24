@@ -308,3 +308,47 @@
     display: none;
   }
 }
+
+
+.mobileLabel{
+    display:none;
+}
+
+@media (max-width:768px){
+
+.desktopLabel{
+    display:none;
+}
+
+.mobileLabel{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    padding:10px 20px;
+
+    background:#1d1d1d;
+    border:1px solid #c7a15a;
+    border-radius:14px;
+
+    color:#d7b06a;
+
+    font-size:.75rem;
+    font-weight:700;
+    line-height:1.25;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+}
+
+@media (max-width: 768px) {
+
+  .badgeDot {
+
+    display: none;
+
+  }
+
+}

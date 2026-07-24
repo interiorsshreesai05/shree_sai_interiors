@@ -13,15 +13,27 @@ export default function Hero() {
       <div className={styles.heroGrid}>
         {/* Left Column: Copy & Actions */}
         <div className={styles.heroContent}>
-          <motion.div
-            className={styles.labelBadge}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          >
-            <span className={styles.badgeDot} />
-            <span className={styles.label}>Luxury Interior Studio</span>
-          </motion.div>
+<motion.div
+  className={styles.labelBadge}
+  initial={{ opacity: 0, y: 15 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+>
+  <span className={styles.badgeDot} />
+
+  {/* Desktop Only */}
+  <span className={styles.desktopLabel}>
+    Luxury Interior Studio
+  </span>
+
+<span className={styles.mobileLabel}>
+
+  <span>Shree Sai Interiors</span>
+
+ 
+
+</span>
+</motion.div>
 
           <motion.h1
             className={styles.title}

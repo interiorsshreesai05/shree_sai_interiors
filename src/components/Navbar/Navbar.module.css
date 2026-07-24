@@ -264,6 +264,9 @@
   border-radius: 8px;
   transition: all 0.25s var(--nav-ease);
 }
+.mobileTitle {
+  display: none;
+}
 
 .mobileNavLink:hover {
   color: var(--text-main);
@@ -292,7 +295,6 @@
   padding: 0.9rem 1.5rem;
 }
 
-/* Media Queries */
 @media (max-width: 1024px) {
   .desktopNav,
   .ctaWrapper {
@@ -301,9 +303,31 @@
 
   .mobileActions {
     display: flex;
+    flex-shrink: 0;
+  }
+
+  .mobileTitle {
+    display: block;
+    flex: 1;
+    text-align: center;
+   color: var(--gold-vivid);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .logoLink {
+    flex-shrink: 0;
   }
 
   .inner {
     padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
   }
 }

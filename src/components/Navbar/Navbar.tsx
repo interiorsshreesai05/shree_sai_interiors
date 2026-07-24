@@ -208,7 +208,12 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
+          <div className={styles.mobileTitle}>
+  Shree Sai Interiors
+</div>
           <div className={styles.mobileActions}>
+            {/* Mobile Title */}
+
             <button
               type="button"
               className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleActive : ""}`}
