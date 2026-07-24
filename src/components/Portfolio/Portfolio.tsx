@@ -12,7 +12,7 @@ const projects = [
     title: "Residence | Horizon House",
     category: "Residential",
     location: "Mumbai",
-    image: "/images/project-01.jpg",
+    image: "/03.png",
     description: "A sanctuary of natural textures, ambient light, and tailored spatial planning.",
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     title: "Boutique Lounge",
     category: "Hospitality",
     location: "Pune",
-    image: "/images/project-02.jpg",
+    image: "/04.png",
     description: "An intimate dining setting blending mood lighting with rich marble finishes.",
   },
   {
@@ -28,7 +28,7 @@ const projects = [
     title: "Executive Corporate Suite",
     category: "Office",
     location: "Bengaluru",
-    image: "/images/project-03.jpg",
+    image: "/05.png",
     description: "Minimalist executive workspace engineered for focus, acoustic calm, and prestige.",
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     title: "Luxury Fine Jewelry Gallery",
     category: "Retail",
     location: "Delhi",
-    image: "/images/project-04.jpg",
+    image: "/03.png",
     description: "A museum-quality retail gallery showcasing bespoke lighting and brass detailing.",
   },
 ];
@@ -61,7 +61,7 @@ export default function Portfolio() {
   }, [nextSlide, isPaused]);
 
   return (
-    <section className={styles.portfolioSection} id="portfolio">
+    <section className={styles.portfolioSection} id="Portfolio">
       <div className={styles.container}>
         {/* Header Row */}
         <div className={styles.headerRow}>

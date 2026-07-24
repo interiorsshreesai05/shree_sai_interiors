@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import styles from "./Hero.module.css";
 
 // Replace with your interior project photo path
-const HERO_IMAGE_SRC = "/images/hero-01.jpg";
+const HERO_IMAGE_SRC = "/Homepage.png";
 
 export default function Hero() {
   return (

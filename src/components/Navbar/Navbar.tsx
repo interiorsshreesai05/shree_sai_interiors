@@ -83,13 +83,13 @@ export default function Navbar() {
       if (!section) return;
 
       const offset =
-  sectionId === "home" ? 0 :
-  sectionId === "about" ? -10 :
-  sectionId === "services" ? -10 :
-  sectionId === "portfolio" ? -20 :
-  sectionId === "gallery" ? 70 :
-  sectionId === "contact" ? -6:
-  getNavOffset();
+        sectionId === "home" ? 0 :
+        sectionId === "about" ? -10 :
+        sectionId === "services" ? -10 :
+        sectionId === "portfolio" ? -20 :
+        sectionId === "gallery" ? 70 :
+        sectionId === "contact" ? -6 :
+        getNavOffset();
       const top = section.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
       setActiveSection(sectionId);
@@ -148,7 +148,7 @@ export default function Navbar() {
         role="banner"
       >
         <div className={styles.inner}>
-          {/* Logo container without restrictive clipping masks */}
+          {/* Logo container */}
           <a
             href="#home"
             className={styles.logoLink}
@@ -184,7 +184,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Consultation CTA with high-contrast text */}
+          {/* Consultation CTA */}
           <div className={styles.ctaWrapper}>
             <a
               href="#contact"
@@ -223,7 +223,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - slides in from the left */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
@@ -238,9 +238,9 @@ export default function Navbar() {
 
             <motion.aside
               className={styles.mobileMenu}
-              initial={{ x: "100%" }}
+              initial={{ x: "-100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              exit={{ x: "-100%" }}
               transition={{ duration: 0.35, ease: navEase }}
             >
               <div className={styles.mobileNavContent}>
@@ -248,8 +248,8 @@ export default function Navbar() {
                   <Image
                     src={LOGO_SRC}
                     alt="Shree Sai Interiors"
-                    width={180}
-                    height={50}
+                    width={160}
+                    height={45}
                     className={styles.mobileLogo}
                   />
                   <button
@@ -266,7 +266,7 @@ export default function Navbar() {
                   {NAV_LINKS.map(({ label, sectionId }, index) => (
                     <motion.div
                       key={sectionId}
-                      initial={{ opacity: 0, x: 20 }}
+                      initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.25, delay: 0.04 + index * 0.03 }}
                     >
@@ -293,6 +293,15 @@ export default function Navbar() {
                     }}
                   >
                     <span>Book Consultation</span>
+                    <svg className={styles.ctaArrow} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path
+                        d="M3.333 8h9.334M8.667 4l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </a>
                 </div>
               </div>

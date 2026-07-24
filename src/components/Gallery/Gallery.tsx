@@ -9,37 +9,37 @@ import styles from "./Gallery.module.css";
 const galleryImages = [
   {
     id: 1,
-    src: "/images/gallery-01.jpg",
+    src: "/Homepage.png",
     title: "Sculptural Marble Detail",
     category: "Living Lounge",
   },
   {
     id: 2,
-    src: "/images/gallery-02.jpg",
+    src: "/Homepage.png",
     title: "Ambient Brass Lighting",
     category: "Dining Suite",
   },
   {
     id: 3,
-    src: "/images/gallery-03.jpg",
+    src: "/03.png",
     title: "Custom Wood Joinery",
     category: "Master Suite",
   },
   {
     id: 4,
-    src: "/images/gallery-04.jpg",
+    src: "/04.png",
     title: "Textured Fluted Wall",
     category: "Executive Study",
   },
   {
     id: 5,
-    src: "/images/gallery-05.jpg",
+    src: "/05.png",
     title: "Architectural Cove Light",
     category: "Foyer Gallery",
   },
   {
     id: 6,
-    src: "/images/gallery-06.jpg",
+    src: "/03.png",
     title: "Minimalist Stone Vanity",
     category: "Powder Room",
   },

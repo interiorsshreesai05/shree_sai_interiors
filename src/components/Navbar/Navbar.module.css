@@ -22,18 +22,16 @@
   width: 100%;
   z-index: 1000;
   padding: 1rem 0;
-  background: rgb(32, 32, 32);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border-bottom: 1px solid var(--nav-border);
+  background: #202020;
+  border-bottom: 1px solid #2d2d2d;
   transition: all 0.35s var(--nav-ease);
 }
 
 .navbarScrolled {
   padding: 0.65rem 0;
-  background: var(--nav-bg-scrolled);
-  border-bottom-color: var(--nav-border-scrolled);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+  background: #202020;
+  border-bottom: 1px solid #2d2d2d;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Inner Max-Width Layout Center */
@@ -62,7 +60,6 @@
 .logo {
   width: auto;
   height: clamp(2.5rem, 3.8vw, 4.2rem);
-  /* object-fit: contain; */
   transition: height 0.35s var(--nav-ease);
 }
 
@@ -123,7 +120,7 @@
   padding: 0.75rem 1.6rem;
   border-radius: 999px;
   background: var(--gold-gradient);
-  color: #eceef0 !important; /* Forces sharp black text over gold */
+  color: #1a1a1a !important;
   font-size: 0.825rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -185,26 +182,26 @@
   transform: translateY(-3.5px) rotate(-45deg);
 }
 
-/* Mobile Drawer Overlay */
+/* Mobile Drawer Overlay - Left Slide Design */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 1001;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
 }
 
 .mobileMenu {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   z-index: 1002;
-  width: min(85%, 360px);
-  background: #0C0E12;
-  border-left: 1px solid var(--nav-border);
-  padding: 2rem 1.75rem;
-  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.9);
+  width: min(85%, 340px);
+  background: linear-gradient(180deg, #16181d 0%, #0c0e12 100%);
+  border-right: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 2.2rem 1.75rem;
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.8);
 }
 
 .mobileNavContent {
@@ -218,66 +215,81 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .mobileLogo {
   height: auto;
   width: auto;
+  max-width: 150px;
 }
 
 .menuClose {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid var(--nav-border);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--gold-vivid);
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menuClose:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .mobileNav {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.1rem;
 }
 
 .mobileNavLink {
-  display: block;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
   text-decoration: none;
-  padding: 0.4rem 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  transition: all 0.25s var(--nav-ease);
+}
+
+.mobileNavLink:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .mobileNavLinkActive {
   color: var(--gold-vivid);
+  background: rgba(212, 175, 55, 0.06);
+  border-left: 3px solid var(--gold-primary);
 }
 
 .mobileNavUnderline {
-  display: block;
-  height: 2px;
-  margin-top: 4px;
-  background: var(--gold-gradient);
+  display: none; /* Replaced by active state background styling for cleaner mobile layout */
 }
 
 .mobileCtaWrapper {
   margin-top: auto;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .mobileCtaButton {
   width: 100%;
   justify-content: center;
+  padding: 0.9rem 1.5rem;
 }
 
 /* Media Queries */

@@ -71,7 +71,7 @@ export default function About() {
           >
             <div className={styles.imageFramePrimary}>
               <Image
-                src="/images/about-01.jpg"
+                src="/AboutUs.png"
                 alt="Architectural interior view"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -82,17 +82,7 @@ export default function About() {
               <div className={styles.goldCornerTL} />
             </div>
 
-            <div className={styles.imageFrameSecondary}>
-              <Image
-                src="/images/about-02.jpg"
-                alt="Luxury interior detail"
-                fill
-                sizes="(max-width: 1024px) 50vw, 25vw"
-                className={styles.image}
-              />
-              <div className={styles.imageOverlay} />
-              <div className={styles.goldCornerBR} />
-            </div>
+           
           </motion.div>
         </div>
 

@@ -190,8 +190,8 @@
 .imageFrame {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  height: clamp(320px, 45vh, 420px); /* Compact height logic */
+  max-width: 600px;
+  height: clamp(420px, 45vh, 420px); /* Compact height logic */
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.3);
