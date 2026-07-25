@@ -1,124 +1,139 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowUpRight, Award, Compass, ShieldCheck } from "lucide-react";
 import styles from "./Hero.module.css";
 
-// Replace with your interior project photo path
-const HERO_IMAGE_SRC = "/Homepage.png";
-
-export default function Hero() {
+export default function HeroCinematic() {
   return (
-    <section className={styles.heroSection} id="home">
-      <div className={styles.heroGrid}>
-        {/* Left Column: Copy & Actions */}
-        <div className={styles.heroContent}>
-<motion.div
-  className={styles.labelBadge}
-  initial={{ opacity: 0, y: 15 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
->
-  <span className={styles.badgeDot} />
+    <section className={styles.heroWrapper} id="home">
+      {/* Background Lighting Vignette */}
+      <div className={styles.ambientGlow} />
 
-  {/* Desktop Only */}
-  <span className={styles.desktopLabel}>
-    Luxury Interior Studio
-  </span>
+      {/* Main Grid */}
+      <div className={styles.gridContainer}>
+        {/* Left Column - Content */}
+        <div className={styles.leftCol}>
+          {/* Top Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className={styles.topBadge}
+          >
+            <span className={styles.badgeDot} />
+            <span className={styles.badgeText}>
+              SHREE SAI INTERIORS • BESPOKE STUDIO
+            </span>
+          </motion.div>
 
-<span className={styles.mobileLabel}>
-
-  <span>Shree Sai Interiors</span>
-
- 
-
-</span>
-</motion.div>
-
+          {/* Headline */}
           <motion.h1
-            className={styles.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className={styles.title}
           >
-            Crafting warm luxury interiors with a modern, refined soul.
+            Creating spaces where architecture meets{" "}
+            <span className={styles.goldText}>silent luxury.</span>
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.p
-            className={styles.description}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className={styles.description}
           >
-            Bespoke residential, commercial, and hospitality spaces designed for calm, precision, and timeless elegance.
+            Bespoke residential & commercial interior architecture engineered with
+            raw materials, kinetic spatial harmony, and uncompromising precision.
           </motion.p>
 
+          {/* CTAs */}
           <motion.div
-            className={styles.actions}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            transition={{ duration: 0.7, delay: 0.45 }}
+            className={styles.btnGroup}
           >
-            <a href="#contact" className={styles.primaryButton}>
-              <span>Book a Consultation</span>
+            <a href="#contact" className={styles.primaryGoldBtn}>
+              <span>Schedule Consultation</span>
+              <ArrowUpRight className={styles.btnIcon} />
             </a>
-            <a href="#portfolio" className={styles.secondaryButton}>
+
+            <a href="#portfolio" className={styles.ghostOutlineBtn}>
               <span>Explore Portfolio</span>
             </a>
           </motion.div>
-
-          <motion.div
-            className={styles.heroStats}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-          >
-            <div className={styles.statItem}>
-              <span>20+</span>
-              <p>Signature Spaces</p>
-            </div>
-            <div className={styles.statDivider} />
-            <div className={styles.statItem}>
-              <span>12</span>
-              <p>Luxury Collaborations</p>
-            </div>
-            <div className={styles.statDivider} />
-            <div className={styles.statItem}>
-              <span>9</span>
-              <p>Turnkey Projects</p>
-            </div>
-          </motion.div>
         </div>
 
-        {/* Right Column: Sized Interior Image Display */}
+        {/* Right Column - Hero Visual */}
         <motion.div
-          className={styles.heroMediaContainer}
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className={styles.rightCol}
         >
-          <div className={styles.imageFrame}>
+          <div className={styles.imageCardContainer}>
             <Image
-              src={HERO_IMAGE_SRC}
-              alt="Shree Sai Interiors Signature Living Space"
+              src="/Homepage.png"
+              alt="Shree Sai Interiors Luxury Architecture"
               fill
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className={styles.heroImage}
               priority
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className={styles.heroImg}
             />
             <div className={styles.imageOverlay} />
-            <div className={styles.goldCornerTL} />
-            <div className={styles.goldCornerBR} />
+
+            {/* High-Contrast Floating Stat Card */}
+            <div className={styles.floatingGlassBadge}>
+              <Award className={styles.cardIcon} />
+              <div>
+                <strong className={styles.cardTitle}>25+ Signature Spaces</strong>
+                <span className={styles.cardSub}>Completed Across India</span>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
 
-      <div className={styles.scrollHint}>
-        <div className={styles.mouseIndicator}>
-          <div className={styles.mouseWheel} />
+      {/* Bottom Metrics Bar */}
+      <motion.footer
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className={styles.bottomBar}
+      >
+        <div className={styles.metricItem}>
+          <ShieldCheck className={styles.metricIcon} />
+          <div>
+            <strong>100% Turnkey</strong>
+            <span>Design to Execution</span>
+          </div>
         </div>
-        <span>Scroll to discover</span>
-      </div>
+
+        <div className={styles.divider} />
+
+        <div className={styles.metricItem}>
+          <Award className={styles.metricIcon} />
+          <div>
+            <strong>12 Excellence Awards</strong>
+            <span>Architectural Guild</span>
+          </div>
+        </div>
+
+        <div className={styles.divider} />
+
+        <div className={styles.metricItem}>
+          <Compass className={styles.metricIcon} />
+          <div>
+            <strong>Key Locations</strong>
+            <span>Mumbai • Goa • Dubai</span>
+          </div>
+        </div>
+      </motion.footer>
     </section>
   );
 }
