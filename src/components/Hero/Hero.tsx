@@ -40,7 +40,7 @@ export default function HeroParticles() {
 
     // Color palette matching the screenshot (crimson / deep red floating orbs)
 const colors = [
-  "rgba(180, 40, 40, ",
+  "rgba(280, 40, 40, ",
   "rgba(210, 45, 45, ",
   "rgba(235, 50, 50, ",
   "rgba(255, 70, 70, ",
