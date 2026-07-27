@@ -1,7 +1,17 @@
 :root {
   --bg-dark: #121316; /* Clean deep black/charcoal background */
-  --accent-red: #e50914;
-  --accent-red-hover: #f40612;
+--accent-gold: #D4AF37;
+--accent-gold-light: #F8E6A0;
+--accent-gold-dark: #B88A1C;
+
+--gold-gradient: linear-gradient(
+135deg,
+#F8E6A0 0%,
+#E5C768 20%,
+#D4AF37 50%,
+#C89B2C 75%,
+#B88A1C 100%
+);
   --text-white: #ffffff;
   --text-muted: #9aa0a6;
   --border-subtle: rgba(255, 255, 255, 0.12);
@@ -107,27 +117,56 @@
 .primaryRedBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.8rem;
-  background-color: var(--accent-red);
-  color: #ffffff;
-  font-size: 0.92rem;
-  font-weight: 600;
-  border-radius: 10px;
+  gap: 0.7rem;
+
+  padding: 0.9rem 2rem;
+
+  border-radius: 12px;
   text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 8px 24px rgba(229, 9, 20, 0.35);
+
+  background: var(--gold-gradient);
+
+  color: #111111;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+      0 8px 25px rgba(212,175,55,.35),
+      inset 0 1px 0 rgba(255,255,255,.35);
+
+  transition: all .35s ease;
+}
+.primaryRedBtn:hover{
+
+transform:translateY(-4px) scale(1.03);
+
+background:linear-gradient(
+135deg,
+#FFF3C8,
+#F8DD7A,
+#D9B64D,
+#C3911A
+);
+
+box-shadow:
+0 15px 40px rgba(212,175,55,.55);
+
+color:#000;
+
 }
 
-.primaryRedBtn:hover {
-  background-color: var(--accent-red-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(229, 9, 20, 0.5);
+.btnIcon{
+    width:18px;
+    height:18px;
+
+    transition:.3s;
 }
 
-.btnIcon {
-  width: 18px;
-  height: 18px;
+.primaryRedBtn:hover .btnIcon{
+    transform:translate(4px,-3px) rotate(-10deg);
 }
 
 .secondaryGlassBtn {

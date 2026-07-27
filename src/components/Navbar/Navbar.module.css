@@ -1,44 +1,58 @@
 ﻿:root {
-  /* Change semi-transparent 0.7 to solid/darker 0.98 or 1.0 */
---nav-bg: rgba(10, 10, 12, 0.45);
---nav-bg-scrolled: rgba(8, 8, 10, 0.75);
-  --nav-border: rgba(255, 255, 255, 0.05);
-  --nav-border-scrolled: rgba(255, 0, 50, 0.25);
-  --gold-primary: #D4AF37;
---gold-vivid: #F5D76E;
---gold-dark: #B88A1C;
+  /* Solid, 100% opaque background colors */
+  --nav-bg: #111111;
+  --nav-bg-scrolled: #111111;
+  --nav-border: rgba(212, 175, 55, 0.15);
+  --nav-border-scrolled: rgba(212, 175, 55, 0.35);
 
---gold-gradient: linear-gradient(
-135deg,
-#F8E6A0 0%,
-#D4AF37 50%,
-#B88A1C 100%
-);
+  --gold-primary: #D4AF37;
+  --gold-vivid: #F5D76E;
+  --gold-dark: #B88A1C;
+
+  --gold-gradient: linear-gradient(
+    135deg,
+    #F8E6A0 0%,
+    #D4AF37 50%,
+    #B88A1C 100%
+  );
   --text-main: #ffffff;
   --text-muted: #9aa0a6;
   --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Glassmorphic Navbar Container */
+/* Solid Navbar Container */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 1000;
+  
+  /* Force maximum stacking priority above relative sections */
+  z-index: 9999 !important;
+  isolation: isolate; 
+  
   padding: 1.2rem 0;
-  background: var(--nav-bg);
-  /* Removed backdrop-filter to prevent washed out / blurry red dots */
+  
+  /* Solid 100% opaque background */
+  background-color: #0B0B0B !important;
+  background: #0B0B0B !important;
+  opacity: 1 !important;
+  
+  /* Prevent GPU composite layer bleed-through */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  
   border-bottom: 1px solid var(--nav-border);
   transition: all 0.35s var(--nav-ease);
 }
 
 .navbarScrolled {
   padding: 0.75rem 0;
-  background: var(--nav-bg-scrolled);
+  background-color: #0B0B0B !important;
+  background: #0B0B0B !important;
   border-bottom: 1px solid var(--nav-border-scrolled);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95);
 }
 /* Inner Layout Center */
 .inner {
@@ -63,14 +77,11 @@
   opacity: 0.9;
 }
 
-/* Update your logo class in Navbar.module.css */
 .logo {
   width: auto;
   height: clamp(2.2rem, 3.2vw, 3.5rem);
   transition: height 0.35s var(--nav-ease);
   object-fit: contain;
-
-  /* Adds a soft white/light glow outline around logo shapes without creating a white box */
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
 }
 
@@ -79,11 +90,8 @@
   width: auto;
   max-width: 140px;
   object-fit: contain;
-
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
 }
-
-
 
 .navbarScrolled .logo {
   height: clamp(1.9rem, 2.6vw, 2.4rem);
@@ -112,8 +120,8 @@
 .navLink:hover {
   color: #F5D76E;
   text-shadow:
-    0 0 8px rgba(212,175,55,.55),
-    0 0 16px rgba(212,175,55,.25);
+    0 0 8px rgba(212, 175, 55, 0.55),
+    0 0 16px rgba(212, 175, 55, 0.25);
 }
 
 .navLinkActive {
@@ -127,12 +135,12 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--red-gradient);
+  background: var(--gold-gradient);
   border-radius: 999px;
-  box-shadow: 0 0 12px rgba(255, 0, 50, 0.8);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
 }
 
-/* Red High-Contrast CTA Button */
+/* Gold High-Contrast CTA Button */
 .ctaWrapper {
   display: flex;
   align-items: center;
@@ -144,36 +152,21 @@
   gap: 0.65rem;
   padding: 0.75rem 1.6rem;
   border-radius: 10px;
-
- background: var(--gold-gradient);
-
+  background: var(--gold-gradient);
   color: #111 !important;
-
   font-size: 0.85rem;
   font-weight: 700;
-
   text-decoration: none;
-
-box-shadow:0 0 14px rgba(212,175,55,.8);
-
-  transition: .3s;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.8);
+  transition: 0.3s;
 }
 
-.ctaButton:hover{
-
-transform:translateY(-3px);
-
-background:linear-gradient(
-135deg,
-#FFE7A7,
-#E0BB55,
-#C8961A
-);
-
-box-shadow:
-0 10px 35px rgba(212,175,55,.55);
-
+.ctaButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #FFE7A7, #E0BB55, #C8961A);
+  box-shadow: 0 10px 35px rgba(212, 175, 55, 0.55);
 }
+
 .ctaArrow {
   width: 15px;
   height: 15px;
@@ -225,8 +218,7 @@ box-shadow:
   position: fixed;
   inset: 0;
   z-index: 1001;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .mobileMenu {
@@ -236,8 +228,8 @@ box-shadow:
   bottom: 0;
   z-index: 1002;
   width: min(85%, 340px);
-  background: rgba(12, 13, 16, 0.95);
-  border-right: 1px solid rgba(255, 0, 50, 0.2);
+  background: #0c0d10; /* Solid background without opacity */
+  border-right: 1px solid rgba(212, 175, 55, 0.2);
   padding: 2.2rem 1.75rem;
   box-shadow: 20px 0 50px rgba(0, 0, 0, 0.9);
 }
@@ -255,12 +247,6 @@ box-shadow:
   margin-bottom: 2.5rem;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.mobileLogo {
-  height: auto;
-  width: auto;
-  max-width: 140px;
 }
 
 .menuClose {
@@ -310,14 +296,10 @@ box-shadow:
   background: rgba(255, 255, 255, 0.03);
 }
 
-.mobileNavLinkActive{
-
-background:rgba(212,175,55,.08);
-
-border-left:3px solid var(--gold-primary);
-
-color:var(--gold-vivid);
-
+.mobileNavLinkActive {
+  background: rgba(212, 175, 55, 0.08);
+  border-left: 3px solid var(--gold-primary);
+  color: var(--gold-vivid);
 }
 
 .mobileNavUnderline {
