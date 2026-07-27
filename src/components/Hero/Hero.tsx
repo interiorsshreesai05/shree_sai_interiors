@@ -40,11 +40,11 @@ export default function HeroParticles() {
 
     // Color palette matching the screenshot (crimson / deep red floating orbs)
 const colors = [
-  "rgba(255, 230, 170, ",
-  "rgba(245, 210, 120, ",
-  "rgba(225, 185, 80, ",
-  "rgba(212, 175, 55, ",
-  "rgba(180, 145, 40, ",
+  "rgba(255, 248, 220, ", // Champagne
+  "rgba(255, 235, 170, ", // Pale Gold
+  "rgba(255, 223, 120, ", // Bright Gold
+  "rgba(245, 200, 70, ",  // Metallic Gold
+  "rgba(212, 175, 55, ",  // Classic Gold
 ];
     const particleCount = Math.floor((width * height) / 11000);
     const particles: Particle[] = [];
