@@ -111,7 +111,7 @@ ctx.shadowColor = `${p.color}1)`;
           transition={{ duration: 0.6 }}
           className={styles.topBadge}
         >
-          <span>Bespoke Interior & Architectural Studio</span>
+        
         </motion.div>
 
         {/* Main Headline */}

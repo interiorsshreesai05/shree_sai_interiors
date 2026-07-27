@@ -1,7 +1,5 @@
 ﻿:root {
-  /* Solid, 100% opaque background colors */
-  --nav-bg: #111111;
-  --nav-bg-scrolled: #111111;
+  /* Color Variables */
   --nav-border: rgba(212, 175, 55, 0.15);
   --nav-border-scrolled: rgba(212, 175, 55, 0.35);
 
@@ -20,40 +18,56 @@
   --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Solid Navbar Container */
+/* Base Navbar: Transparent at the top over Hero */
+/* Base Navbar: Transparent over Hero Section */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  
-  /* Force maximum stacking priority above relative sections */
-  z-index: 9999 !important;
-  isolation: isolate; 
-  
+  z-index: 9999;
+  isolation: isolate;
   padding: 1.2rem 0;
   
-  /* Solid 100% opaque background */
-  background-color: #0B0B0B !important;
-  background: #0B0B0B !important;
-  opacity: 1 !important;
+  /* Start fully transparent with ZERO border to prevent sub-pixel white line flashes */
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   
-  /* Prevent GPU composite layer bleed-through */
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  
-  border-bottom: 1px solid var(--nav-border);
-  transition: all 0.35s var(--nav-ease);
+  /* Only transition background, padding, and box-shadow */
+  transition: background-color 0.25s var(--nav-ease), 
+              padding 0.35s var(--nav-ease), 
+              box-shadow 0.25s var(--nav-ease);
 }
 
+/* Scrolled State: Solid dark background with clean dark gold border */
 .navbarScrolled {
   padding: 0.75rem 0;
+  
+  /* Solid dark background matching .page (#0B0B0B) */
   background-color: #0B0B0B !important;
   background: #0B0B0B !important;
-  border-bottom: 1px solid var(--nav-border-scrolled);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95);
+  
+  /* Bottom border rendered via box-shadow to prevent sub-pixel layout gaps */
+  box-shadow: inset 0 -1px 0 0 rgba(212, 175, 55, 0.25), 
+              0 10px 30px rgba(0, 0, 0, 0.95) !important;
 }
+
+/* Prevent sub-pixel antialiasing artifacts */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: transparent;
+  pointer-events: none;
+}
+
 /* Inner Layout Center */
 .inner {
   display: flex;
@@ -140,7 +154,7 @@
   box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
 }
 
-/* Gold High-Contrast CTA Button */
+/* CTA Button */
 .ctaWrapper {
   display: flex;
   align-items: center;
@@ -217,7 +231,7 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  z-index: 1001;
+  z-index: 10001;
   background: rgba(0, 0, 0, 0.85);
 }
 
@@ -226,9 +240,9 @@
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 1002;
+  z-index: 10002;
   width: min(85%, 340px);
-  background: #0c0d10; /* Solid background without opacity */
+  background: #0B0B0B; /* Solid drawer background */
   border-right: 1px solid rgba(212, 175, 55, 0.2);
   padding: 2.2rem 1.75rem;
   box-shadow: 20px 0 50px rgba(0, 0, 0, 0.9);
