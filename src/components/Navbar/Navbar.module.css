@@ -4,11 +4,16 @@
 --nav-bg-scrolled: rgba(8, 8, 10, 0.75);
   --nav-border: rgba(255, 255, 255, 0.05);
   --nav-border-scrolled: rgba(255, 0, 50, 0.25);
-  
-  --red-primary: #e50914;
-  --red-vivid: #ff2a35;
-  --red-gradient: linear-gradient(135deg, #ff3b47 0%, #e50914 50%, #b3000b 100%);
-  
+  --gold-primary: #D4AF37;
+--gold-vivid: #F5D76E;
+--gold-dark: #B88A1C;
+
+--gold-gradient: linear-gradient(
+135deg,
+#F8E6A0 0%,
+#D4AF37 50%,
+#B88A1C 100%
+);
   --text-main: #ffffff;
   --text-muted: #9aa0a6;
   --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -105,12 +110,15 @@
 }
 
 .navLink:hover {
-  color: var(--text-main);
+  color: #F5D76E;
+  text-shadow:
+    0 0 8px rgba(212,175,55,.55),
+    0 0 16px rgba(212,175,55,.25);
 }
 
 .navLinkActive {
-  color: var(--text-main);
-  font-weight: 600;
+  color: #F5D76E;
+  font-weight: 700;
 }
 
 .navUnderline {
@@ -134,24 +142,38 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.7rem 1.4rem;
+  padding: 0.75rem 1.6rem;
   border-radius: 10px;
-  background: var(--red-primary);
-  color: #ffffff !important;
+
+ background: var(--gold-gradient);
+
+  color: #111 !important;
+
   font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.35);
-  transition: all 0.25s var(--nav-ease);
+
+box-shadow:0 0 14px rgba(212,175,55,.8);
+
+  transition: .3s;
 }
 
-.ctaButton:hover {
-  transform: translateY(-2px);
-  background: var(--red-vivid);
-  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.5);
-}
+.ctaButton:hover{
 
+transform:translateY(-3px);
+
+background:linear-gradient(
+135deg,
+#FFE7A7,
+#E0BB55,
+#C8961A
+);
+
+box-shadow:
+0 10px 35px rgba(212,175,55,.55);
+
+}
 .ctaArrow {
   width: 15px;
   height: 15px;
@@ -288,10 +310,14 @@
   background: rgba(255, 255, 255, 0.03);
 }
 
-.mobileNavLinkActive {
-  color: var(--text-main);
-  background: rgba(255, 0, 50, 0.1);
-  border-left: 3px solid var(--red-primary);
+.mobileNavLinkActive{
+
+background:rgba(212,175,55,.08);
+
+border-left:3px solid var(--gold-primary);
+
+color:var(--gold-vivid);
+
 }
 
 .mobileNavUnderline {

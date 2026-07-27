@@ -40,11 +40,11 @@ export default function HeroParticles() {
 
     // Color palette matching the screenshot (crimson / deep red floating orbs)
 const colors = [
-  "rgba(280, 40, 40, ",
-  "rgba(210, 45, 45, ",
-  "rgba(235, 50, 50, ",
-  "rgba(255, 70, 70, ",
-  "rgba(255, 100, 100, ",
+  "rgba(255, 230, 170, ",
+  "rgba(245, 210, 120, ",
+  "rgba(225, 185, 80, ",
+  "rgba(212, 175, 55, ",
+  "rgba(180, 145, 40, ",
 ];
     const particleCount = Math.floor((width * height) / 11000);
     const particles: Particle[] = [];
@@ -77,8 +77,8 @@ const colors = [
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${p.color}${p.alpha})`;
-        ctx.shadowBlur = p.radius * 2;
-        ctx.shadowColor = p.color + "0.8)";
+ctx.shadowBlur = p.radius * 5;
+ctx.shadowColor = `${p.color}1)`;
         ctx.fill();
         ctx.shadowBlur = 0; // reset
       });
