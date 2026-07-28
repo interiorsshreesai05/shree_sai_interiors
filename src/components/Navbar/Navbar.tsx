@@ -149,24 +149,26 @@ export default function Navbar() {
       >
         <div className={styles.inner}>
           {/* Logo container */}
-          <a
-            href="#home"
-            className={styles.logoLink}
-            aria-label="Shree Sai Interiors home"
-            onClick={(event) => {
-              event.preventDefault();
-              scrollToSection("home");
-            }}
-          >
-            <Image
-              src={LOGO_SRC}
-              alt="Shree Sai Interiors"
-              width={220}
-              height={65}
-              className={styles.logo}
-              priority
-            />
-          </a>
+     {/* Desktop Logo */}
+<a
+  href="#home"
+  className={styles.logoLink}
+  aria-label="Shree Sai Interiors home"
+  onClick={(event) => {
+    event.preventDefault();
+    scrollToSection("home");
+  }}
+>
+  <Image
+    src={LOGO_SRC}
+    alt="Shree Sai Interiors"
+    width={240}
+    height={70}
+    className={styles.logo}
+    priority
+    unoptimized // Ensures original sharp quality for blend mode
+  />
+</a>
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNav} aria-label="Primary navigation">

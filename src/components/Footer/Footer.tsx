@@ -1,55 +1,95 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
     <footer className={styles.footerSection}>
-      <div className={styles.footerInner}>
-        <div className={styles.brandBlock}>
-          <p className={styles.brandTitle}>Shree Sai Interiors</p>
-          <p className={styles.brandText}>
-            Luxury interiors informed by architecture, material depth, and serene proportions.
-          </p>
-          <p className={styles.brandNote}>
-            Custom design, thoughtful detailing, and a collaborative process built for modern living.
-          </p>
-        </div>
+      {/* Dark Overlay for Readability */}
+      <div className={styles.overlay}></div>
 
-        <div className={styles.linksGrid}>
-          <div>
-            <p className={styles.linkHeading}>Quick Links</p>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
+      <div className={styles.footerContent}>
+        <div className={styles.footerInner}>
+          {/* Brand Block */}
+          <div className={styles.brandBlock}>
+            <div className={styles.logoWrapper}>
+              <img 
+                src="/Shree Sai Interiors Logo.png" 
+                alt="Shree Sai Interiors Logo" 
+                className={styles.brandLogo} 
+              />
+              <p className={styles.brandTitle}>
+                SHREE SAI<br />
+                <span>INTERIORS</span>
+              </p>
+            </div>
+            <p className={styles.brandText}>
+              Complete Interior & Turnkey Solutions for Residential and Commercial Spaces.
+            </p>
+            <div className={styles.socialIcons}>
+              <a href="#" aria-label="Facebook"><FaFacebookF size={16} /></a>
+              <a href="#" aria-label="Instagram"><FaInstagram size={16} /></a>
+              <a href="#" aria-label="LinkedIn"><FaLinkedinIn size={16} /></a>
+            </div>
           </div>
 
-          <div>
-            <p className={styles.linkHeading}>Contact</p>
-            <a href="mailto:hello@shreesaiinteriors.com">
-              <Mail size={16} /> hello@shreesaiinteriors.com
-            </a>
-            <a href="tel:+919876543210">
-              <Phone size={16} /> +91 98765 43210
-            </a>
+          {/* Nav Links Wrapper for Mobile Split */}
+          <div className={styles.linksGrid}>
+            {/* Quick Links */}
+            <div className={styles.linkColumn}>
+              <p className={styles.linkHeading}>Quick Links</p>
+              <a href="#home">Home</a>
+              <a href="#about">About Us</a>
+              <a href="#services">Services</a>
+              <a href="#portfolio">Portfolio</a>
+              <a href="#gallery">Gallery</a>
+              <a href="#contact">Contact Us</a>
+            </div>
+
+            {/* Expertise */}
+            <div className={styles.linkColumn}>
+              <p className={styles.linkHeading}>Our Expertise</p>
+              <a href="#turnkey">Turnkey Solutions</a>
+              <a href="#flooring">Flooring Solutions</a>
+              <a href="#wall-ceiling">Wall & Ceiling</a>
+              <a href="#civil">Civil & Finishing</a>
+              <a href="#smart">Smart Building</a>
+            </div>
           </div>
 
-          <div className={styles.socialBlock}>
-            <p className={styles.linkHeading}>Follow</p>
-            <div className={styles.socialLinks}>
-              <a href="#" aria-label="Instagram">
-                <span className={styles.socialText}>IG</span>
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <span className={styles.socialText}>IN</span>
-              </a>
+          {/* Contact Us */}
+          <div className={styles.contactColumn}>
+            <p className={styles.linkHeading}>Contact Us</p>
+            <div className={styles.contactList}>
+              <div className={styles.contactItem}>
+                <Phone size={18} className={styles.icon} />
+                <span>+91 98765 43210</span>
+              </div>
+              <div className={styles.contactItem}>
+                <Mail size={18} className={styles.icon} />
+                <span>info@shreesainteriors.com</span>
+              </div>
+              <div className={styles.contactItem}>
+                <MapPin size={18} className={styles.icon} />
+                <span>123, ABC Road, Nashik, Maharashtra - 422001</span>
+              </div>
+              <div className={styles.contactItem}>
+                <Clock size={18} className={styles.icon} />
+                <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.footerBottom}>
-        <span>© 2026 Shree Sai Interiors. Crafted for enduring luxury.</span>
+        {/* Footer Bottom Bar */}
+        <div className={styles.footerBottom}>
+          <p>© 2026 Shree Sai Interiors. All Rights Reserved.</p>
+          <div className={styles.bottomLinks}>
+            <a href="#privacy">Privacy Policy</a>
+            <span className={styles.divider}>•</span>
+            <a href="#terms">Terms & Conditions</a>
+          </div>
+        </div>
       </div>
     </footer>
   );

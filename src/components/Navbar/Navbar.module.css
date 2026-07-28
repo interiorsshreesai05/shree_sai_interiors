@@ -18,7 +18,6 @@
   --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Base Navbar: Transparent at the top over Hero */
 /* Base Navbar: Transparent over Hero Section */
 .navbar {
   position: fixed;
@@ -79,36 +78,50 @@
   padding: 0 2rem;
 }
 
-/* Logo Styling */
+/* Logo Styling - UPDATED FOR LARGE OVERFLOW LOGO */
 .logoLink {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  overflow: visible; /* Allows oversized logo to overflow wrapper seamlessly */
   transition: opacity 0.25s var(--nav-ease);
 }
 
 .logoLink:hover {
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .logo {
+  /* Increased size significantly */
+  height: clamp(3.8rem, 5vw, 5.2rem) !important;
   width: auto;
-  height: clamp(2.2rem, 3.2vw, 3.5rem);
-  transition: height 0.35s var(--nav-ease);
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+
+  /* Negative vertical margins pull the image out without changing header height */
+  margin-top: -1.2rem;
+  margin-bottom: -1.2rem;
+
+  /* Strips black background box and adds golden pop */
+  mix-blend-mode: screen;
+  filter: brightness(1.35) contrast(1.15) drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+  
+  transition: height 0.35s var(--nav-ease), margin 0.35s var(--nav-ease), filter 0.35s var(--nav-ease);
 }
 
 .mobileLogo {
   height: auto;
   width: auto;
-  max-width: 140px;
+  max-width: 160px;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+  mix-blend-mode: screen;
+  filter: brightness(1.35) contrast(1.15) drop-shadow(0 0 10px rgba(212, 175, 55, 0.45));
 }
 
 .navbarScrolled .logo {
-  height: clamp(1.9rem, 2.6vw, 2.4rem);
+  /* Subtle shrink when scrolled while keeping it clear and bold */
+  height: clamp(3rem, 4vw, 4.2rem) !important;
+  margin-top: -0.7rem;
+  margin-bottom: -0.7rem;
 }
 
 /* Desktop Navigation */
