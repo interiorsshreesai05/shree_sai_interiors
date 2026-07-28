@@ -7,10 +7,14 @@
 
 .contactSection {
   position: relative;
-  padding: clamp(5rem, 8vw, 7rem) clamp(1.5rem, 4vw, 4rem);
-  max-width: 1180px;
-  margin: 0 auto 3rem;
-  display: grid;
+  padding: clamp(4rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
   gap: 3.5rem;
 }
 
@@ -21,7 +25,7 @@
   right: -5%;
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(201, 169, 98, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -29,14 +33,17 @@
 .innerGrid {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 0.96fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: stretch; /* Stretches cards equally */
   z-index: 1;
 }
 
 /* Intro Left Side */
 .contactIntro {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   gap: 1.4rem;
 }
 
@@ -67,8 +74,8 @@
 .contactIntro h2 {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(2.35rem, 3.5vw, 3.5rem);
-  line-height: 1.08;
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
+  line-height: 1.15;
   color: #fff;
   letter-spacing: -0.01em;
 }
@@ -83,19 +90,19 @@
 .contactMeta {
   display: grid;
   gap: 1rem;
-  margin-top: 0.5rem;
 }
 
-.contactMeta div {
-  padding: 1.25rem 1.4rem;
-  border-radius: 20px;
+.metaCard {
+  padding: 1.1rem 1.4rem;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.contactMeta div:hover {
-  border-color: rgba(201, 169, 98, 0.3);
+.metaCard:hover {
+  border-color: rgba(201, 169, 98, 0.35);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .metaHeader {
@@ -103,7 +110,7 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--gold-soft);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .contactMeta span {
@@ -128,18 +135,20 @@
   line-height: 1.7;
   max-width: 34rem;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 /* Form Styling Right Side */
 .formCard {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 1.25rem;
-  padding: 2.2rem;
+  padding: 2.5rem;
   border-radius: 28px;
-  background: rgba(18, 21, 27, 0.6);
-  backdrop-filter: blur(12px);
+  background: rgba(18, 21, 27, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
@@ -147,13 +156,13 @@
 .fieldGroup {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .fieldLabel {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
   color: #d1cab8;
   font-size: 0.95rem;
 }
@@ -162,51 +171,72 @@
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--gold-soft);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
 }
 
 .inputField,
-.inputArea {
+.inputArea,
+.selectField {
   width: 100%;
   padding: 0.9rem 1.1rem;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(10, 12, 15, 0.6);
+  background: rgba(10, 12, 15, 0.7);
   color: #f4f4f4;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.selectField {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d8bc7c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.selectField option {
+  background-color: #0d1015;
+  color: #f4f4f4;
 }
 
 .inputField::placeholder,
 .inputArea::placeholder {
-  color: rgba(209, 202, 184, 0.4);
+  color: rgba(209, 202, 184, 0.35);
 }
 
 .inputField:focus,
-.inputArea:focus {
-  border-color: rgba(201, 169, 98, 0.55);
+.inputArea:focus,
+.selectField:focus {
+  border-color: rgba(201, 169, 98, 0.6);
   box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.12);
+  background: rgba(10, 12, 15, 0.9);
 }
 
 .fullWidth {
   width: 100%;
 }
 
+.inputArea {
+  resize: vertical;
+  min-height: 110px;
+}
+
 .submitButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  max-width: 15rem;
+  width: 100%; /* Full width button fixes empty bottom right space */
   margin-top: 0.5rem;
-  padding: 0.95rem 1.75rem;
+  padding: 1rem 1.75rem;
   border-radius: 999px;
   background: var(--gold-gradient);
   border: none;
   color: #0b0b0b;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -214,15 +244,29 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.submitButton:hover,
-.submitButton:focus-visible {
+.buttonContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.submitButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(201, 169, 98, 0.25);
+  box-shadow: 0 12px 30px rgba(201, 169, 98, 0.3);
 }
 
 .submitButton:disabled {
   opacity: 0.85;
   cursor: default;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Map Frame Container */
@@ -243,7 +287,7 @@
 @media (max-width: 980px) {
   .innerGrid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .fieldGroup {
@@ -253,7 +297,7 @@
 
 @media (max-width: 680px) {
   .contactSection {
-    padding: 4rem 1.5rem 4rem;
+    padding: 3rem 1.25rem;
   }
 
   .formCard {
