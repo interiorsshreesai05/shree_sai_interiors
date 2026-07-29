@@ -1,20 +1,20 @@
 :root {
-  --bg-dark: #121316; /* Clean deep black/charcoal background */
---accent-gold: #D4AF37;
---accent-gold-light: #F8E6A0;
---accent-gold-dark: #B88A1C;
+  --bg-dark: #0a0b0d; 
+  --accent-gold: #D4AF37;
+  --accent-gold-light: #F8E6A0;
+  --accent-gold-dark: #B88A1C;
 
---gold-gradient: linear-gradient(
-135deg,
-#F8E6A0 0%,
-#E5C768 20%,
-#D4AF37 50%,
-#C89B2C 75%,
-#B88A1C 100%
-);
+  --gold-gradient: linear-gradient(
+    135deg,
+    #F8E6A0 0%,
+    #E5C768 20%,
+    #D4AF37 50%,
+    #C89B2C 75%,
+    #B88A1C 100%
+  );
   --text-white: #ffffff;
-  --text-muted: #9aa0a6;
-  --border-subtle: rgba(255, 255, 255, 0.12);
+  --text-muted: #f1f5f9;
+  --border-subtle: rgba(255, 255, 255, 0.25);
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -33,33 +33,33 @@
   box-sizing: border-box;
 }
 
-/* PARTICLES CANVAS */
-.particleCanvas {
+/* CRISP BACKGROUND IMAGE */
+.heroBgImage {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  background-image: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2500&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6) contrast(1.1); /* Slightly darkened for better overall contrast */
+  z-index: 0;
+}
+
+/* STRONGER CENTER OVERLAY TO BLOCK TREE TRUNK CONFLITCS */
+.radialMask {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0.9) 100%);
   z-index: 1;
   pointer-events: none;
 }
 
-/* RADIAL VIGNETTE FOR SOFT BLENDING */
-.radialMask {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(18, 19, 22, 0.4) 0%,
-    rgba(18, 19, 22, 0.95) 85%
-  );
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* CENTERED CONTAINER */
+/* CENTERED CONTENT */
 .centerContainer {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   max-width: 860px;
   width: 100%;
   display: flex;
@@ -68,23 +68,24 @@
   text-align: center;
 }
 
-/* TOP BADGE */
+/* TOP BADGE (Enhanced border + background) */
 .topBadge {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 1.1rem;
+  padding: 0.45rem 1.2rem;
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.82rem;
   font-weight: 500;
-  color: #d1d5db;
-  letter-spacing: 0.02em;
+  color: #ffffff;
+  letter-spacing: 0.03em;
   margin-bottom: 2rem;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* MAIN HEADLINE */
+/* HEADLINE */
 .title {
   margin: 0 0 1.25rem 0;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -92,19 +93,23 @@
   font-weight: 600;
   letter-spacing: -0.03em;
   color: var(--text-white);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
-/* SUBTITLE */
+/* SUBTITLE (Added soft dark backdrop filter to pop over tree trunk) */
 .description {
   margin: 0 auto 2.5rem auto;
   max-width: 680px;
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   line-height: 1.6;
-  color: var(--text-muted);
+  color: #f1f5f9;
   font-weight: 400;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
 }
 
-/* BUTTONS GROUP */
+/* BUTTONS */
 .btnGroup {
   display: flex;
   align-items: center;
@@ -118,55 +123,41 @@
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-
   padding: 0.9rem 2rem;
-
   border-radius: 12px;
   text-decoration: none;
-
   background: var(--gold-gradient);
-
   color: #111111;
-
   font-size: 0.95rem;
   font-weight: 700;
-
-  border: 1px solid rgba(255,255,255,.12);
-
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow:
-      0 8px 25px rgba(212,175,55,.35),
-      inset 0 1px 0 rgba(255,255,255,.35);
-
-  transition: all .35s ease;
-}
-.primaryRedBtn:hover{
-
-transform:translateY(-4px) scale(1.03);
-
-background:linear-gradient(
-135deg,
-#FFF3C8,
-#F8DD7A,
-#D9B64D,
-#C3911A
-);
-
-box-shadow:
-0 15px 40px rgba(212,175,55,.55);
-
-color:#000;
-
+    0 8px 25px rgba(212, 175, 55, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: all 0.35s ease;
 }
 
-.btnIcon{
-    width:18px;
-    height:18px;
-
-    transition:.3s;
+.primaryRedBtn:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: linear-gradient(
+    135deg,
+    #FFF3C8,
+    #F8DD7A,
+    #D9B64D,
+    #C3911A
+  );
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.55);
+  color: #000;
 }
 
-.primaryRedBtn:hover .btnIcon{
-    transform:translate(4px,-3px) rotate(-10deg);
+.btnIcon {
+  width: 18px;
+  height: 18px;
+  transition: 0.3s;
+}
+
+.primaryRedBtn:hover .btnIcon {
+  transform: translate(4px, -3px) rotate(-10deg);
 }
 
 .secondaryGlassBtn {
@@ -174,20 +165,20 @@ color:#000;
   align-items: center;
   gap: 0.6rem;
   padding: 0.85rem 1.8rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.65);
   border: 1px solid var(--border-subtle);
   color: var(--text-white);
   font-size: 0.92rem;
   font-weight: 500;
   border-radius: 10px;
   text-decoration: none;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   transition: all 0.25s ease;
 }
 
 .secondaryGlassBtn:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
 }
 
@@ -203,16 +194,18 @@ color:#000;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.88rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   flex-wrap: wrap;
 }
 
 .tagPill {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 0.2rem 0.6rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.25rem 0.7rem;
   border-radius: 6px;
-  color: #e2e8f0;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
 }

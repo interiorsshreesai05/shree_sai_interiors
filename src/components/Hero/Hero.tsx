@@ -1,120 +1,25 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Play } from "lucide-react";
 import styles from "./Hero.module.css";
 
-interface Particle {
-  x: number;
-  y: number;
-  radius: number;
-  color: string;
-  vx: number;
-  vy: number;
-  alpha: number;
-}
-
-export default function HeroParticles() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
-  // Background Particles Engine
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Color palette matching the screenshot (crimson / deep red floating orbs)
-const colors = [
-  "rgba(255, 248, 220, ", // Champagne
-  "rgba(255, 235, 170, ", // Pale Gold
-  "rgba(255, 223, 120, ", // Bright Gold
-  "rgba(245, 200, 70, ",  // Metallic Gold
-  "rgba(212, 175, 55, ",  // Classic Gold
-];
-    const particleCount = Math.floor((width * height) / 11000);
-    const particles: Particle[] = [];
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 8 + 5,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        alpha: Math.random() * 0.7 + 0.3,
-      });
-    }
-
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Wrap around screen edges
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${p.color}${p.alpha})`;
-ctx.shadowBlur = p.radius * 5;
-ctx.shadowColor = `${p.color}1)`;
-        ctx.fill();
-        ctx.shadowBlur = 0; // reset
-      });
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
+export default function Hero() {
   return (
     <section className={styles.heroWrapper} id="home">
-      {/* Moving Red Particles Canvas */}
-      <canvas ref={canvasRef} className={styles.particleCanvas} />
+      {/* Sharp High-Res Luxury Interior Image */}
+      <div className={styles.heroBgImage} />
 
-      {/* Radial Vignette Mask to blend center text smoothly */}
+      {/* Dark Gradient Overlay for Text Readability */}
       <div className={styles.radialMask} />
 
-      {/* Centered Content Container */}
+      {/* Hero Content Container */}
       <div className={styles.centerContainer}>
-        {/* Top Floating Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className={styles.topBadge}
-        >
-        
-        </motion.div>
 
-        {/* Main Headline */}
+        {/* Removed topBadge from here */}
+
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -136,7 +41,7 @@ ctx.shadowColor = `${p.color}1)`;
           jaw-dropping, fully customized physical sanctuaries.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -154,7 +59,7 @@ ctx.shadowColor = `${p.color}1)`;
           </a>
         </motion.div>
 
-        {/* Bottom Small Tags */}
+        {/* Bottom Tags Row */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

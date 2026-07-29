@@ -25,12 +25,69 @@ const services = [
   },
 ];
 
+// Motion Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.1,
+    },
+  },
+} as const;
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 35, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+} as const;
+
 export default function Services() {
   return (
     <section className={styles.servicesSection} id="services">
+      {/* 1. Continuous Ambient Background Glowing Orbs */}
+      <motion.div 
+        className={styles.ambientOrbLeft}
+        animate={{
+          scale: [1, 1.25, 1],
+          opacity: [0.25, 0.45, 0.25],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className={styles.ambientOrbRight}
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
       <div className={styles.container}>
         {/* Header Block */}
-        <div className={styles.headerRow}>
+        <motion.div 
+          className={styles.headerRow}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className={styles.labelBadge}>
             <span className={styles.badgeDot} />
             <span className={styles.sectionLabel}>Services</span>
@@ -38,25 +95,42 @@ export default function Services() {
           <h2 className={styles.heading}>
             Luxury design services tailored for every scale of interior project.
           </h2>
-        </div>
+        </motion.div>
 
         {/* Services Cards Grid */}
-        <div className={styles.cardGrid}>
+        <motion.div 
+          className={styles.cardGrid}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.article
                 key={service.title}
                 className={styles.card}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -8 }}
+                variants={cardVariants}
+                whileTap={{ scale: 0.97 }}
               >
+                {/* 2. Shimmer Light Beam Effect */}
+                <motion.div 
+                  className={styles.shimmerLine}
+                  animate={{
+                    x: ["-100%", "200%"]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3.5,
+                    delay: index * 0.8,
+                    ease: "easeInOut"
+                  }}
+                />
+
                 <div className={styles.cardTop}>
                   <div className={styles.cardIconWrapper}>
-                    <Icon size={26} className={styles.cardIcon} />
+                    <Icon size={24} className={styles.cardIcon} />
                   </div>
                   <span className={styles.serviceTag}>{service.tag}</span>
                 </div>
@@ -73,12 +147,12 @@ export default function Services() {
                   </div>
                 </div>
 
-                {/* Subtle Hover Glow Overlay */}
+                {/* Subtle Hover Glow */}
                 <div className={styles.hoverGlow} />
               </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

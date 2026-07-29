@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { X, Sparkles, Maximize2 } from "lucide-react";
+import { Sparkles, ArrowUpRight } from "lucide-react";
 import styles from "./Gallery.module.css";
 
 const galleryImages = [
@@ -31,126 +31,124 @@ const galleryImages = [
     title: "Textured Fluted Wall",
     category: "Executive Study",
   },
-  {
-    id: 5,
-    src: "/05.png",
-    title: "Architectural Cove Light",
-    category: "Foyer Gallery",
-  },
-  {
-    id: 6,
-    src: "/03.png",
-    title: "Minimalist Stone Vanity",
-    category: "Powder Room",
-  },
 ];
 
-// Duplicate the array so the continuous marquee seamless repeats
-const marqueeTrack = [...galleryImages, ...galleryImages];
+// Duplicate items to ensure seamless infinite looping on mobile marquee
+const marqueeItems = [...galleryImages, ...galleryImages];
 
 export default function Gallery() {
-  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
+  const [activeId, setActiveId] = useState<number>(1);
 
   return (
     <section className={styles.gallerySection} id="gallery">
       <div className={styles.container}>
-        {/* Compact Header Block */}
-        <div className={styles.headerRow}>
-          <div className={styles.labelBadge}>
-            <Sparkles size={13} className={styles.badgeIcon} />
-            <span className={styles.sectionLabel}>Gallery</span>
+        {/* Header Block */}
+        <div className={styles.headerBlock}>
+          <div className={styles.badgeRow}>
+            <span className={styles.goldDot} />
+            <Sparkles size={11} className={styles.badgeIcon} />
+            <span className={styles.sectionLabel}>Portfolio Spotlight</span>
           </div>
-          <h2 className={styles.heading}>
-            Every surface speaks with quiet refinement.
-          </h2>
+          <div className={styles.titleRow}>
+            <h2 className={styles.heading}>
+              Architectural Detail <span className={styles.goldText}>&amp; Refinement</span>
+            </h2>
+            <p className={styles.subheading}>
+              Explore bespoke craftsmanship, ambient lighting highlights, and hand-selected surfaces.
+            </p>
+          </div>
+        </div>
+
+        {/* 1. Desktop Accordion Stage */}
+        <div className={styles.expandableGrid}>
+          {galleryImages.map((item) => {
+            const isActive = item.id === activeId;
+            return (
+              <motion.div
+                key={item.id}
+                className={`${styles.card} ${isActive ? styles.activeCard : ""}`}
+                onClick={() => setActiveId(item.id)}
+                onMouseEnter={() => setActiveId(item.id)}
+                layout
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    priority={item.id === 1}
+                    className={styles.cardImage}
+                  />
+                </div>
+
+                <div className={styles.cardGradient} />
+
+                {!isActive && (
+                  <div className={styles.collapsedLabel}>
+                    <span className={styles.collapsedCategory}>{item.category}</span>
+                    <span className={styles.collapsedTitle}>{item.title}</span>
+                  </div>
+                )}
+
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      className={styles.expandedContent}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 12 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className={styles.glassBox}>
+                        <div className={styles.metaRow}>
+                          <span className={styles.categoryPill}>{item.category}</span>
+                          <div className={styles.arrowIcon}>
+                            <ArrowUpRight size={14} />
+                          </div>
+                        </div>
+                        <h3 className={styles.expandedTitle}>{item.title}</h3>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* 2. Mobile Continuous Slider (Right to Left Marquee) */}
+        <div className={styles.mobileMarqueeContainer}>
+          <motion.div
+            className={styles.mobileMarqueeTrack}
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 18, // Adjust speed (higher number = slower slide)
+              ease: "linear",
+            }}
+          >
+            {marqueeItems.map((item, index) => (
+              <div key={`mobile-${item.id}-${index}`} className={styles.mobileCard}>
+                <div className={styles.mobileImageWrapper}>
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    sizes="280px"
+                    className={styles.cardImage}
+                  />
+                  <div className={styles.cardGradient} />
+                </div>
+                <div className={styles.mobileCardContent}>
+                  <span className={styles.categoryPill}>{item.category}</span>
+                  <h3 className={styles.mobileTitle}>{item.title}</h3>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
-
-      {/* Horizontal Infinite Slider Track */}
-      <div className={styles.sliderWrapper}>
-        <motion.div
-          className={styles.marqueeTrack}
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            repeat: Infinity,
-            ease: "linear",
-            duration: 25,
-          }}
-        >
-          {marqueeTrack.map((item, index) => (
-            <div
-              key={`${item.id}-${index}`}
-              className={styles.galleryCard}
-              onClick={() => setSelectedImage(item)}
-            >
-              <Image
-                src={item.src}
-                alt={item.title}
-                fill
-                sizes="340px"
-                className={styles.image}
-              />
-              
-              <div className={styles.cardOverlay}>
-                <div className={styles.expandIcon}>
-                  <Maximize2 size={16} />
-                </div>
-                <div>
-                  <span className={styles.categoryPill}>{item.category}</span>
-                  <h3 className={styles.itemTitle}>{item.title}</h3>
-                </div>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Lightbox Modal Popup */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            className={styles.lightboxBackdrop}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              className={styles.lightboxCard}
-              initial={{ scale: 0.9, opacity: 0, y: 15 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 15 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                className={styles.closeBtn}
-                onClick={() => setSelectedImage(null)}
-                aria-label="Close modal"
-              >
-                <X size={20} />
-              </button>
-
-              <div className={styles.lightboxImageWrapper}>
-                <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.title}
-                  fill
-                  sizes="100vw"
-                  className={styles.lightboxImage}
-                  priority
-                />
-              </div>
-
-              <div className={styles.lightboxMeta}>
-                <span className={styles.modalCategory}>{selectedImage.category}</span>
-                <h3 className={styles.modalTitle}>{selectedImage.title}</h3>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

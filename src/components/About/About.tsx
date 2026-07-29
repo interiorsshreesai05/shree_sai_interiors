@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import styles from "./About.module.css";
 
 const facts = [
@@ -17,13 +18,69 @@ const timeline = [
   { year: "2024", title: "Recognized for artisanal craftsmanship" },
 ];
 
+function AnimatedNumber({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10) || 0;
+  const suffix = value.replace(/[0-9]/g, "");
+
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.floor(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, numericValue, {
+        duration: 2,
+        ease: [0.16, 1, 0.3, 1],
+      });
+      return controls.stop;
+    }
+  }, [isInView, count, numericValue]);
+
+  useEffect(() => {
+    return rounded.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = `${latest}${suffix}`;
+      }
+    });
+  }, [rounded, suffix]);
+
+  return <span ref={ref}>0{suffix}</span>;
+}
+
+// Animation Variants for Timeline Container & Items
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+} as const;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+} as const;
+
 export default function About() {
   return (
     <section className={styles.aboutSection} id="about">
       <div className={styles.container}>
         {/* Main Content Grid */}
         <div className={styles.contentGrid}>
-          {/* Left Column: Details & Narrative */}
+          {/* Left Column */}
           <motion.div
             className={styles.details}
             initial={{ opacity: 0, y: 24 }}
@@ -61,7 +118,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right Column: Overlapping Visual Collage */}
+          {/* Right Column */}
           <motion.div
             className={styles.visuals}
             initial={{ opacity: 0, scale: 0.96 }}
@@ -81,8 +138,6 @@ export default function About() {
               <div className={styles.imageOverlay} />
               <div className={styles.goldCornerTL} />
             </div>
-
-           
           </motion.div>
         </div>
 
@@ -99,7 +154,9 @@ export default function About() {
               whileHover={{ y: -4 }}
             >
               <div className={styles.statHeader}>
-                <span className={styles.statValue}>{item.value}</span>
+                <span className={styles.statValue}>
+                  <AnimatedNumber value={item.value} />
+                </span>
                 <span className={styles.statAccentLine} />
               </div>
               <p className={styles.statLabel}>{item.label}</p>
@@ -108,31 +165,52 @@ export default function About() {
         </div>
 
         {/* Timeline Roadmap */}
-        <div className={styles.timelineWrapper}>
+        <motion.div 
+          className={styles.timelineWrapper}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className={styles.timelineHeader}>
             <span className={styles.timelineTitle}>Our Journey</span>
-            <div className={styles.timelineTrackLine} />
+            <div className={styles.timelineTrackLine}>
+              <motion.div 
+                className={styles.timelineProgressGlow}
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              />
+            </div>
           </div>
 
-          <div className={styles.timelineGrid}>
-            {timeline.map((entry, index) => (
+          <motion.div 
+            className={styles.timelineGrid}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            {timeline.map((entry) => (
               <motion.div
                 key={entry.year}
                 className={styles.timelineItem}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                variants={itemVariants}
+                whileTap={{ scale: 0.98 }}
               >
+                <div className={styles.mobileConnectorLine} />
                 <div className={styles.yearNode}>
-                  <span className={styles.nodeDot} />
+                  <span className={styles.nodeDot}>
+                    <span className={styles.nodePulse} />
+                  </span>
                   <span className={styles.yearText}>{entry.year}</span>
                 </div>
                 <p className={styles.entryTitle}>{entry.title}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,283 +1,259 @@
-:root {
-  --gold-primary: #D4AF37;
-  --gold-vivid: #F2D272;
-  --gold-gradient: linear-gradient(135deg, #F3E0AA 0%, #D4AF37 50%, #B28B28 100%);
-  --text-main: #FFFFFF;
-  --text-muted: #CBD2DC;
-  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .portfolioSection {
-  position: relative;
   width: 100%;
-  padding: 6rem 2rem;
+  padding: 55px 4vw; /* Reduced vertical padding so it fits on screen without scrolling */
   background-color: #0A0C0F;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  overflow: hidden;
+  /* scroll-margin-top: 140px; */
+     padding-top: 40px;
+  margin-top: -10px;
 }
 
 .container {
-  max-width: 1380px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Header & Control Row */
+/* Header Block */
 .headerRow {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.headerLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  max-width: 750px;
-}
-
-.labelBadge {
+/* Gold Capsule Badge */
+.portfolioBadge {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.4rem 0.9rem;
-  width: fit-content;
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 0.35rem 1rem;
+  background-color: #12120e;
+  border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 999px;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.08);
+  margin-bottom: 0.75rem;
 }
 
 .badgeDot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
+  background-color: #F5D76E;
   border-radius: 50%;
-  background-color: var(--gold-vivid);
+  box-shadow: 0 0 8px rgba(245, 215, 110, 0.8);
 }
 
-.sectionLabel {
-  color: var(--gold-vivid);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+.badgeText {
+  color: #F5D76E;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .heading {
-  margin: 0;
-  font-size: clamp(2rem, 3.2vw, 3rem);
-  line-height: 1.15;
-  font-weight: 700;
-  color: var(--text-main);
+  font-size: 1.85rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.25;
+  max-width: 620px;
 }
 
-/* Arrow Navigation Buttons */
-.controls {
+/* Carousel Stage & Grid Layout */
+.carouselStage {
+  width: 100%;
+  position: relative;
+}
+
+.projectCard {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  background: #12151B;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+/* Fixed Image Frame Fit */
+.imageFrame {
+  position: relative;
+  width: 100%;
+  height: 350px; /* Reduced to fit neatly within standard screen heights */
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.image {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+}
+
+.viewBadge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  background: rgba(18, 21, 27, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.viewBadge:hover {
+  background: #F5D76E;
+  color: #000;
+}
+
+/* Details & Typography Fixes */
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.5rem;
+}
+
+.infoMeta {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.category {
+  color: #F5D76E;
+  font-weight: 600;
+}
+
+.location {
+  color: #8A92A6;
+}
+
+.metaDivider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+}
+
+/* Invalid Hex Syntax Fixed */
+.projectDesc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  color: #A0A8B8;
+}
+
+.counterRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.numericCounter {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.currentNum {
+  color: #F5D76E;
+}
+
+.numDivider,
+.totalNum {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .controlBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  color: var(--gold-vivid);
+  color: #fff;
   cursor: pointer;
-  transition: all 0.3s var(--ease-smooth);
+  transition: all 0.2s ease;
 }
 
 .controlBtn:hover {
-  background: var(--gold-gradient);
-  border-color: transparent;
-  color: #0A0C0F;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  background: rgba(212, 175, 55, 0.15);
+  color: #F5D76E;
 }
 
-/* Carousel Stage Wrapper */
-.carouselStage {
-  position: relative;
-  width: 100%;
-  min-height: 480px;
-}
-
-.activeCardWrapper {
-  width: 100%;
-}
-
-.projectCard {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  align-items: center;
-  gap: 2.5rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-}
-
-/* Image Container */
-.imageFrame {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: #12151B;
-}
-
-.image {
-  object-fit: cover;
-  transition: transform 0.8s var(--ease-smooth);
-}
-
-.imageFrame:hover .image {
-  transform: scale(1.05);
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(10, 12, 15, 0.6) 100%);
-}
-
-.viewBadge {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: 999px;
-  background: rgba(10, 12, 15, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  color: var(--gold-vivid);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Project Info Panel */
-.projectInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  padding-right: 1.5rem;
-}
-
-.infoMeta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.category {
-  color: var(--gold-vivid);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.location {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-}
-
-.projectTitle {
-  margin: 0;
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--text-main);
-}
-
-.projectDesc {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.75;
-}
-
-/* Slide Counter */
-.counterRow {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  margin-top: 1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.currentNum {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--gold-vivid);
-}
-
-.numDivider {
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  opacity: 0.4;
-}
-
-.totalNum {
-  font-size: 1rem;
-  color: var(--text-muted);
-}
-
-/* Pagination Dots */
+/* Navigation Dots */
 .paginationDots {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  margin-top: 2.5rem;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   cursor: pointer;
-  transition: all 0.3s var(--ease-smooth);
+  transition: all 0.3s ease;
 }
 
 .activeDot {
-  width: 28px;
-  border-radius: 999px;
-  background: var(--gold-gradient);
+  width: 22px;
+  border-radius: 4px;
+  background: #F5D76E;
 }
 
-/* Responsive Adaptations */
-@media (max-width: 1024px) {
-  .headerRow {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+/* Responsive Styles for Laptops & Mobile */
+/* Responsive Styles for Mobile & Tablets */
+@media (max-width: 900px) {
   .projectCard {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .imageFrame {
-    height: 320px;
+    height: 240px;
   }
 
-  .projectInfo {
-    padding-right: 0;
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  /* Hide the "Explore Space" badge on mobile screens */
+  .viewBadge {
+    display: none;
   }
 }

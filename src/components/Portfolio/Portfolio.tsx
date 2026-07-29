@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
@@ -9,11 +9,11 @@ import styles from "./Portfolio.module.css";
 const projects = [
   {
     id: "horizon-house",
-    title: "Residence | Horizon House",
+    title: "Horizon House Residence",
     category: "Residential",
     location: "Mumbai",
     image: "/03.png",
-    description: "A sanctuary of natural textures, ambient light, and tailored spatial planning.",
+    description: "A sanctuary of natural textures, ambient light, and tailored spatial planning designed for modern architectural calm.",
   },
   {
     id: "boutique-lounge",
@@ -21,7 +21,7 @@ const projects = [
     category: "Hospitality",
     location: "Pune",
     image: "/04.png",
-    description: "An intimate dining setting blending mood lighting with rich marble finishes.",
+    description: "An intimate dining setting blending mood lighting with rich marble finishes and acoustic warmth.",
   },
   {
     id: "executive-suite",
@@ -29,7 +29,7 @@ const projects = [
     category: "Office",
     location: "Bengaluru",
     image: "/05.png",
-    description: "Minimalist executive workspace engineered for focus, acoustic calm, and prestige.",
+    description: "Minimalist executive workspace engineered for focus, acoustic calm, and quiet luxury prestige.",
   },
   {
     id: "retail-gallery",
@@ -37,82 +37,48 @@ const projects = [
     category: "Retail",
     location: "Delhi",
     image: "/03.png",
-    description: "A museum-quality retail gallery showcasing bespoke lighting and brass detailing.",
+    description: "A museum-quality retail gallery showcasing bespoke linear lighting and handcrafted brass detailing.",
   },
 ];
 
 export default function Portfolio() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
-  const nextSlide = useCallback(() => {
+  const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
-  }, []);
+  };
 
-  const prevSlide = useCallback(() => {
+  const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  }, []);
-
-  // Auto-play timer
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextSlide, 4500);
-    return () => clearInterval(interval);
-  }, [nextSlide, isPaused]);
+  };
 
   return (
-    <section className={styles.portfolioSection} id="Portfolio">
+    <section className={styles.portfolioSection} id="portfolio">
       <div className={styles.container}>
-        {/* Header Row */}
+        {/* Header Block */}
         <div className={styles.headerRow}>
-          <div className={styles.headerLeft}>
-            <div className={styles.labelBadge}>
-              <span className={styles.badgeDot} />
-              <span className={styles.sectionLabel}>Portfolio</span>
-            </div>
-            <h2 className={styles.heading}>
-              Selected spaces that reflect calm luxury and crafted detail.
-            </h2>
-          </div>
-
-          {/* Carousel Control Buttons */}
-          <div className={styles.controls}>
-            <button
-              type="button"
-              className={styles.controlBtn}
-              onClick={prevSlide}
-              aria-label="Previous project"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              type="button"
-              className={styles.controlBtn}
-              onClick={nextSlide}
-              aria-label="Next project"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+<div className={styles.portfolioBadge}>
+    <span className={styles.badgeDot} />
+    <span className={styles.badgeText}>PORTFOLIO</span>
+  </div>
+          <h2 className={styles.heading}>
+            Architecture & interiors designed with quiet luxury.
+          </h2>
         </div>
 
-        {/* Animated Carousel Stage */}
-        <div
-          className={styles.carouselStage}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        {/* Portfolio Content Stage */}
+        <div className={styles.carouselStage}>
           <AnimatePresence mode="wait">
             <motion.div
               key={projects[currentIndex].id}
               className={styles.activeCardWrapper}
-              initial={{ opacity: 0, x: 50, scale: 0.98 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -50, scale: 0.98 }}
-              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className={styles.projectCard}>
-                {/* Image Display */}
+                {/* Visual Image Showcase */}
                 <div className={styles.imageFrame}>
                   <Image
                     src={projects[currentIndex].image}
@@ -124,18 +90,19 @@ export default function Portfolio() {
                   />
                   <div className={styles.imageOverlay} />
                   
-                  <div className={styles.viewBadge}>
-                    <span>View Project</span>
-                    <ArrowUpRight size={18} />
-                  </div>
+                  <a href={`#${projects[currentIndex].id}`} className={styles.viewBadge}>
+                    <span>Explore Space</span>
+                    <ArrowUpRight size={16} />
+                  </a>
                 </div>
 
-                {/* Project Details Panel */}
+                {/* Project Information */}
                 <div className={styles.projectInfo}>
                   <div className={styles.infoMeta}>
                     <span className={styles.category}>
                       {projects[currentIndex].category}
                     </span>
+                    <span className={styles.metaDivider}>•</span>
                     <span className={styles.location}>
                       {projects[currentIndex].location}
                     </span>
@@ -150,13 +117,35 @@ export default function Portfolio() {
                   </p>
 
                   <div className={styles.counterRow}>
-                    <span className={styles.currentNum}>
-                      0{currentIndex + 1}
-                    </span>
-                    <span className={styles.numDivider}>/</span>
-                    <span className={styles.totalNum}>
-                      0{projects.length}
-                    </span>
+                    <div className={styles.numericCounter}>
+                      <span className={styles.currentNum}>
+                        0{currentIndex + 1}
+                      </span>
+                      <span className={styles.numDivider}>/</span>
+                      <span className={styles.totalNum}>
+                        0{projects.length}
+                      </span>
+                    </div>
+
+                    {/* Nav Controls */}
+                    <div className={styles.controls}>
+                      <button
+                        type="button"
+                        className={styles.controlBtn}
+                        onClick={prevSlide}
+                        aria-label="Previous project"
+                      >
+                        <ChevronLeft size={18} />
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.controlBtn}
+                        onClick={nextSlide}
+                        aria-label="Next project"
+                      >
+                        <ChevronRight size={18} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -164,7 +153,7 @@ export default function Portfolio() {
           </AnimatePresence>
         </div>
 
-        {/* Pagination Dots Indicator */}
+        {/* Progress Dots */}
         <div className={styles.paginationDots}>
           {projects.map((proj, idx) => (
             <button

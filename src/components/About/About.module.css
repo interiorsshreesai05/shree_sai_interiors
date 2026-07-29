@@ -10,37 +10,43 @@
 .aboutSection {
   position: relative;
   width: 100%;
-  padding: 6rem 2rem;
+  max-width: 100%; /* Stay within the available viewport width without introducing overflow */
+  padding: 50px 2rem 6rem 2rem;
   background-color: #0A0C0F;
-  overflow: hidden;
+  overflow: hidden !important; /* CRITICAL: Clips the 500px glow circle inside */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .aboutSection::before {
   content: "";
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -100px; /* Shifted so it stays inside bounds */
+  right: -100px;
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
   pointer-events: none;
+  z-index: 1;
 }
 
+/* FIX 1: Explicitly ensure full width centering */
 .container {
+  width: 100%;
   max-width: 1380px;
-  margin: 0 auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-/* Content Grid */
+/* FIX 2: Balance the columns equally (1fr 1fr) so text doesn't push left */
 .contentGrid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr; /* Equal 50/50 balance */
   gap: clamp(2.5rem, 5vw, 5rem);
   align-items: center;
+  width: 100%;
 }
 
-/* Left Column Styling */
+/* Left Column */
 .details {
   display: flex;
   flex-direction: column;
@@ -126,18 +132,20 @@
   line-height: 1.6;
 }
 
-/* Right Visual Collage */
+/* FIX 3: Ensure visual image frame fills its half cleanly */
 .visuals {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 480px;
+  width: 100%;
 }
 
 .imageFramePrimary {
   position: relative;
-  width: 80%;
+  width: 100%; /* Fill column width naturally */
+  max-width: 520px; /* Cap size so it stays proportional */
   height: 380px;
   border-radius: 20px;
   overflow: hidden;
@@ -147,27 +155,14 @@
   transform: translateY(-20px);
 }
 
-.imageFrameSecondary {
-  position: absolute;
-  bottom: 10px;
-  right: 0;
-  width: 55%;
-  height: 260px;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  background-color: #12151B;
-  z-index: 2;
-}
-
 .image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.6s var(--nav-ease);
 }
 
-.imageFramePrimary:hover .image,
-.imageFrameSecondary:hover .image {
+.imageFramePrimary:hover .image {
   transform: scale(1.05);
 }
 
@@ -178,27 +173,17 @@
   background: linear-gradient(180deg, rgba(10, 12, 15, 0) 60%, rgba(10, 12, 15, 0.5) 100%);
 }
 
-.goldCornerTL,
-.goldCornerBR {
+.goldCornerTL {
   position: absolute;
+  top: 10px;
+  left: 10px;
   width: 14px;
   height: 14px;
   border-color: var(--gold-vivid);
   border-style: solid;
+  border-width: 2px 0 0 2px;
   pointer-events: none;
   z-index: 3;
-}
-
-.goldCornerTL {
-  top: 10px;
-  left: 10px;
-  border-width: 2px 0 0 2px;
-}
-
-.goldCornerBR {
-  bottom: 10px;
-  right: 10px;
-  border-width: 0 2px 2px 0;
 }
 
 /* Stats Row */
@@ -207,6 +192,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 4.5rem;
+  width: 100%;
 }
 
 .statCard {
@@ -250,11 +236,12 @@
   color: var(--text-muted);
 }
 
-/* Timeline Section */
+/* Timeline Roadmap Section */
 .timelineWrapper {
   margin-top: 5rem;
   padding-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
 }
 
 .timelineHeader {
@@ -265,7 +252,7 @@
 }
 
 .timelineTitle {
-  font-size: 0.85rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -274,47 +261,99 @@
 }
 
 .timelineTrackLine {
+  position: relative;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.4), rgba(255, 255, 255, 0.05));
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.timelineProgressGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.8), rgba(242, 210, 114, 0.2));
+  transform-origin: left;
 }
 
 .timelineGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
+  width: 100%;
 }
 
 .timelineItem {
+  position: relative;
   padding: 1.25rem;
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
-  transition: all 0.3s var(--nav-ease);
+  transition: all 0.35s var(--nav-ease);
 }
 
 .timelineItem:hover {
-  border-color: rgba(212, 175, 55, 0.3);
-  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.mobileConnectorLine {
+  display: none;
 }
 
 .yearNode {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   margin-bottom: 0.6rem;
 }
 
 .nodeDot {
-  width: 6px;
-  height: 6px;
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: var(--gold-vivid);
-  box-shadow: 0 0 6px var(--gold-vivid);
+  box-shadow: 0 0 8px var(--gold-vivid);
+}
+
+.nodePulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-vivid);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  opacity: 0.6;
+}
+.entryTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
 }
 
 .yearText {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--gold-vivid);
   letter-spacing: 0.05em;
@@ -322,12 +361,12 @@
 
 .entryTitle {
   margin: 0;
-  font-size: 0.85rem;
+  /* font-size: 0.875rem; */
   color: var(--text-muted);
   line-height: 1.5;
 }
 
-/* Responsive Styles */
+/* Responsive & Mobile Animations */
 @media (max-width: 1024px) {
   .contentGrid {
     grid-template-columns: 1fr;
@@ -338,14 +377,10 @@
   }
 
   .imageFramePrimary {
-    width: 85%;
+    width: 100%;
+    max-width: 100%;
     height: 320px;
     transform: none;
-  }
-
-  .imageFrameSecondary {
-    width: 50%;
-    height: 220px;
   }
 
   .timelineGrid {
@@ -354,15 +389,53 @@
 }
 
 @media (max-width: 640px) {
+  .aboutSection {
+    padding: 3rem 1.25rem;
+  }
+
   .storyBlocks {
     grid-template-columns: 1fr;
   }
 
   .statsRow {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .timelineWrapper {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+  }
+
+  .timelineHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .timelineTitle {
+    font-size: 1.2rem;
   }
 
   .timelineGrid {
     grid-template-columns: 1fr;
+    gap: 2.8rem;
+    position: relative;
+    padding-left: 0.75rem;
+  }
+
+  .timelineItem {
+    padding: 1.15rem 1.25rem;
+    border-left: 2px solid rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(8px);
+  }
+
+  .timelineItem:active {
+    background: rgba(212, 175, 55, 0.06);
+    border-left-color: var(--gold-vivid);
+  }
+
+  .entryTitle {
+    font-size: 0.9rem;
+    color: #E2E8F0;
   }
 }

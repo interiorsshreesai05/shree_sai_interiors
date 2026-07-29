@@ -39,27 +39,26 @@ function NavLinkItem({
   underlineClassName,
   onNavigate,
 }: NavLinkProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    onNavigate(sectionId);
+  };
+
   return (
-    <motion.a
+    <a
       href={`#${sectionId}`}
       className={`${className} ${isActive ? activeClassName : ""}`}
       aria-current={isActive ? "true" : undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        onNavigate(sectionId);
-      }}
-      whileHover={{ y: -1 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.18, ease: navEase }}
+      onClick={handleClick}
     >
       <span>{label}</span>
       <motion.span
         className={underlineClassName}
         initial={false}
         animate={{ scaleX: isActive ? 1 : 0, opacity: isActive ? 1 : 0 }}
-        transition={{ duration: 0.3, ease: navEase }}
+        transition={{ duration: 0.25, ease: navEase }}
       />
-    </motion.a>
+    </a>
   );
 }
 
@@ -67,7 +66,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+
   const headerRef = useRef<HTMLElement | null>(null);
+  const isManualScrolling = useRef(false);
 
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
@@ -77,23 +78,29 @@ export default function Navbar() {
     []
   );
 
+  /* Precise JavaScript Scroll Execution */
   const scrollToSection = useCallback(
     (sectionId: string) => {
-      const section = document.getElementById(sectionId);
-      if (!section) return;
-
-      const offset =
-        sectionId === "home" ? 0 :
-        sectionId === "about" ? -10 :
-        sectionId === "services" ? -10 :
-        sectionId === "portfolio" ? -20 :
-        sectionId === "gallery" ? 70 :
-        sectionId === "contact" ? -6 :
-        getNavOffset();
-      const top = section.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
-      setActiveSection(sectionId);
       closeMenu();
+      const targetElement = document.getElementById(sectionId);
+      if (!targetElement) return;
+
+      isManualScrolling.current = true;
+      setActiveSection(sectionId);
+
+      const navOffset = getNavOffset();
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - navOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth",
+      });
+
+      // Re-enable IntersectionObserver after smooth scroll finishes
+      setTimeout(() => {
+        isManualScrolling.current = false;
+      }, 800);
     },
     [closeMenu, getNavOffset]
   );
@@ -105,6 +112,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* Robust IntersectionObserver for Highlight Sync */
   useEffect(() => {
     const sectionElements = NAV_LINKS.map(({ sectionId }) =>
       document.getElementById(sectionId)
@@ -114,24 +122,26 @@ export default function Navbar() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-          return;
+        if (isManualScrolling.current) return;
+
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+        if (visibleEntries.length > 0) {
+          // Sort by highest visible area in viewport
+          visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+          setActiveSection(visibleEntries[0].target.id);
+        } else if (window.scrollY < SCROLL_THRESHOLD) {
+          setActiveSection("home");
         }
-        if (window.scrollY < SCROLL_THRESHOLD) setActiveSection("home");
       },
       {
-        rootMargin: `-${getNavOffset()}px 0px -40% 0px`,
-        threshold: [0, 0.2, 0.5],
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: [0.1, 0.5, 0.8],
       }
     );
 
     sectionElements.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, [getNavOffset]);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -149,26 +159,25 @@ export default function Navbar() {
       >
         <div className={styles.inner}>
           {/* Logo container */}
-     {/* Desktop Logo */}
-<a
-  href="#home"
-  className={styles.logoLink}
-  aria-label="Shree Sai Interiors home"
-  onClick={(event) => {
-    event.preventDefault();
-    scrollToSection("home");
-  }}
->
-  <Image
-    src={LOGO_SRC}
-    alt="Shree Sai Interiors"
-    width={240}
-    height={70}
-    className={styles.logo}
-    priority
-    unoptimized // Ensures original sharp quality for blend mode
-  />
-</a>
+          <a
+            href="#home"
+            className={styles.logoLink}
+            aria-label="Shree Sai Interiors home"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("home");
+            }}
+          >
+            <Image
+              src={LOGO_SRC}
+              alt="Shree Sai Interiors"
+              width={240}
+              height={70}
+              className={styles.logo}
+              priority
+              unoptimized
+            />
+          </a>
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNav} aria-label="Primary navigation">
@@ -191,8 +200,8 @@ export default function Navbar() {
             <a
               href="#contact"
               className={styles.ctaButton}
-              onClick={(event) => {
-                event.preventDefault();
+              onClick={(e) => {
+                e.preventDefault();
                 scrollToSection("contact");
               }}
             >
@@ -209,13 +218,9 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className={styles.mobileTitle}>
-  Shree Sai Interiors
-</div>
+          {/* Mobile Actions */}
+          <div className={styles.mobileTitle}>Shree Sai Interiors</div>
           <div className={styles.mobileActions}>
-            {/* Mobile Title */}
-
             <button
               type="button"
               className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleActive : ""}`}
@@ -230,7 +235,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay - slides in from the left */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
@@ -294,8 +299,8 @@ export default function Navbar() {
                   <a
                     href="#contact"
                     className={`${styles.ctaButton} ${styles.mobileCtaButton}`}
-                    onClick={(event) => {
-                      event.preventDefault();
+                    onClick={(e) => {
+                      e.preventDefault();
                       scrollToSection("contact");
                     }}
                   >

@@ -7,9 +7,14 @@
 
 .contactSection {
   position: relative;
-  padding: clamp(4rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+  overflow: hidden;
+  padding: clamp(6rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
   max-width: 1200px;
   margin: 0 auto;
+
+     padding-top: 40px;
+  margin-top: -10px;
+  
 }
 
 .container {
@@ -22,9 +27,9 @@
 .ambientGlow {
   position: absolute;
   top: 20%;
-  right: -5%;
-  width: 450px;
-  height: 450px;
+  right: min(-0.75rem, -3%);
+  width: min(380px, 50vw);
+  height: min(380px, 50vw);
   background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
