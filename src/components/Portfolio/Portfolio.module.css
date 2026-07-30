@@ -28,6 +28,7 @@
   border-radius: 999px;
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.08);
   margin-bottom: 0.75rem;
+  margin-left: -88px; 
 }
 
 .badgeDot {
@@ -44,6 +45,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  
 }
 
 .heading {
@@ -242,6 +244,11 @@
   .projectCard {
     grid-template-columns: 1fr;
     gap: 1.25rem;
+  }
+  .portfolioBadge {
+     margin-left: -1px; 
+
+   
   }
 
   .imageFrame {

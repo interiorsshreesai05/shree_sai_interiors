@@ -42,6 +42,7 @@
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 999px;
   width: fit-content;
+   margin-left: -80px; 
 }
 
 .goldDot {
@@ -242,6 +243,12 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+}
+.badgeRow {
+
+   margin-left: -1px; 
+
+
 }
 
   .mobileMarqueeTrack {
