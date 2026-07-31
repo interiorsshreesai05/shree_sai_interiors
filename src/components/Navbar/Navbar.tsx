@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Navbar.module.css";
-
+import { usePathname } from "next/navigation";
 const LOGO_SRC = "/Shree Sai Interiors Logo.png";
 
 const NAV_LINKS = [
@@ -63,6 +63,12 @@ function NavLinkItem({
 }
 
 export default function Navbar() {
+ const pathname = usePathname();
+
+  if (pathname.startsWith("/services/")) {
+    return null;
+  }
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");

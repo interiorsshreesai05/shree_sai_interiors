@@ -21,6 +21,7 @@
   box-sizing: border-box;
 }
 
+/* --- UPDATED NAVBAR BASE --- */
 .navbar {
   position: fixed;
   top: 0;
@@ -30,25 +31,26 @@
   max-width: 100%;
   z-index: 9999;
   isolation: isolate;
-  padding: 1rem 0;
+  /* Reduced top/bottom padding to keep the bar slim despite a large logo */
+  padding: 0.35rem 0; 
   background-color: transparent !important;
   background: transparent !important;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  transition: background-color 0.25s var(--nav-ease), 
-              padding 0.35s var(--nav-ease), 
-              box-shadow 0.25s var(--nav-ease);
+  transition: background-color 0.3s var(--nav-ease), 
+              padding 0.3s var(--nav-ease), 
+              box-shadow 0.3s var(--nav-ease);
 }
 
 .navbarScrolled {
-  padding: 0.65rem 0;
+  /* Slightly tighter padding when scrolled */
+  padding: 0.25rem 0;
   background-color: #0B0B0B !important;
   background: #0B0B0B !important;
   box-shadow: inset 0 -1px 0 0 rgba(212, 175, 55, 0.25), 
               0 10px 20px -5px rgba(0, 0, 0, 0.95) !important;
 }
-
 .inner {
   display: flex;
   align-items: center;
@@ -65,8 +67,12 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  transition: opacity 0.25s var(--nav-ease);
+  transition: opacity 0.25s var(--nav-ease), margin 0.35s var(--nav-ease);
   flex-shrink: 0;
+
+  /* Shift logo down while keeping navbar slim */
+  margin-top: 4px;     /* Push down from the top */
+  margin-bottom: -12px; /* Offset bottom to prevent expanding navbar height */
 }
 
 .logoLink:hover {
@@ -74,16 +80,21 @@
 }
 
 .logo {
-  height: 60px !important;
+  /* Keeps your desired 95px hero size */
+  height: 99px !important;
   width: auto;
   object-fit: contain;
   mix-blend-mode: screen;
   filter: brightness(1.35) contrast(1.15) drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
-  transition: height 0.35s var(--nav-ease);
+  transition: height 0.35s var(--nav-ease), filter 0.35s var(--nav-ease);
 }
 
 .navbarScrolled .logo {
-  height: 40px !important;
+  height: 58px !important; /* Raised from 40px to prevent the "too small" jump */
+}
+.navbarScrolled .logoLink {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .mobileLogo {
@@ -107,7 +118,7 @@
   display: inline-flex;
   align-items: center;
   padding: 0.4rem 0.2rem;
-  color: var(--text-muted);
+  color: white;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -318,6 +329,26 @@
 }
 
 @media (max-width: 1024px) {
+  .navbar {
+    /* Deeper dark fade overlay */
+    background: linear-gradient(
+      180deg, 
+      rgba(0, 0, 0, 0.95) 0%, 
+      rgba(0, 0, 0, 0.75) 50%, 
+      rgba(0, 0, 0, 0.3) 80%,
+      transparent 100%
+    ) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .navbarScrolled {
+    /* Solid black background when scrolling down */
+    background: #0B0B0B !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .desktopNav,
   .ctaWrapper {
     display: none;

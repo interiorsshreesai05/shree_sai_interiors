@@ -1,0 +1,114 @@
+:root {
+  --cyan-bright: #00f2fe;
+  --blue-vivid: #4facfe;
+  --bg-deep: #060913;
+  --bg-console: #0c1222;
+  --border-cyan: rgba(0, 242, 254, 0.2);
+  --text-main: #ffffff;
+  --text-dim: #8a99ad;
+}
+
+.page {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.header {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 75px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; background: #04060d;
+  border-bottom: 1px solid var(--border-cyan); z-index: 1000;
+}
+
+.backButton {
+  display: flex; align-items: center; gap: 0.5rem; color: var(--text-dim);
+  text-decoration: none; font-size: 0.9rem; font-weight: 500;
+}
+
+.brandGroup { display: flex; align-items: center; gap: 0.6rem; }
+.liveDot {
+  width: 8px; height: 8px; background: var(--cyan-bright);
+  border-radius: 50%; box-shadow: 0 0 10px var(--cyan-bright);
+}
+
+.brand { font-size: 1rem; font-weight: 700; color: var(--cyan-bright); }
+
+.hero {
+  padding: 9rem 1.5rem 4rem 1.5rem; text-align: center;
+  background: radial-gradient(circle at top, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
+}
+
+.heroContent { max-width: 750px; margin: 0 auto; }
+.techTag {
+  color: var(--cyan-bright); border: 1px solid var(--border-cyan);
+  padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.8rem;
+  letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+}
+
+.heroContent h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 800; margin: 1.2rem 0; }
+.heroContent p { color: var(--text-dim); font-size: 1.15rem; line-height: 1.6; }
+
+.servicesSection {
+  max-width: 1150px; margin: 0 auto; padding: 2rem 1.5rem 6rem 1.5rem;
+  display: flex; flex-direction: column; gap: 3rem;
+}
+
+.techBlock {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem;
+  background: var(--bg-console); border: 1px solid var(--border-cyan);
+  border-radius: 20px; padding: 2rem; align-items: center;
+}
+
+.imageBox { position: relative; width: 100%; height: 320px; border-radius: 14px; overflow: hidden; }
+.image { object-fit: cover; }
+
+.categoryBadge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: rgba(6, 9, 19, 0.85); color: var(--cyan-bright);
+  border: 1px solid var(--border-cyan); padding: 0.35rem 0.85rem;
+  border-radius: 6px; font-size: 0.75rem; font-weight: 700;
+}
+
+.contentBox { display: flex; flex-direction: column; gap: 1.25rem; }
+.titleRow { display: flex; align-items: center; gap: 0.8rem; }
+
+.iconGlow {
+  background: rgba(0, 242, 254, 0.1); color: var(--cyan-bright);
+  padding: 0.6rem; border-radius: 10px; border: 1px solid var(--border-cyan);
+}
+
+.contentBox h3 { font-size: 1.8rem; font-weight: 700; margin: 0; }
+.contentBox p { color: var(--text-dim); line-height: 1.6; margin: 0; }
+
+.metricsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.5rem; }
+
+.metricCard {
+  background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.85rem; border-radius: 10px; display: flex; flex-direction: column; gap: 0.2rem;
+}
+
+.metricValue { color: var(--cyan-bright); font-weight: 700; font-size: 1rem; }
+.metricLabel { color: var(--text-dim); font-size: 0.75rem; }
+
+.cta { padding: 3rem 1.5rem 6rem 1.5rem; }
+.ctaTerminal {
+  max-width: 850px; margin: 0 auto; text-align: center;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 100%), var(--bg-console);
+  border: 1px solid var(--border-cyan); padding: 3.5rem 2.5rem; border-radius: 24px;
+}
+
+.ctaTerminal h2 { font-size: 2.2rem; font-weight: 800; margin: 0 0 1rem 0; }
+.ctaTerminal p { color: var(--text-dim); margin-bottom: 2rem; }
+
+.ctaButton {
+  display: inline-block; background: linear-gradient(135deg, var(--cyan-bright), var(--blue-vivid));
+  color: #04060d; font-weight: 800; padding: 1rem 2.5rem; border-radius: 999px;
+  text-decoration: none; text-transform: uppercase; font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .techBlock { grid-template-columns: 1fr; }
+  .metricsGrid { grid-template-columns: 1fr; }
+}

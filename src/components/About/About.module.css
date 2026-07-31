@@ -4,23 +4,25 @@
   --gold-gradient: linear-gradient(135deg, #F3E0AA 0%, #D4AF37 50%, #B28B28 100%);
   --text-main: #FFFFFF;
   --text-muted: #CBD2DC;
+  --text-dark: #1A1D20;
+  --text-sub: #555E68;
   --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .aboutSection {
   position: relative;
   width: 100%;
-  max-width: 100%; /* Stay within the available viewport width without introducing overflow */
-  padding: 50px 2rem 6rem 2rem;
+  max-width: 100%;
+  padding: 60px 2rem 5rem 2rem;
   background-color: #0A0C0F;
-  overflow: hidden !important; /* CRITICAL: Clips the 500px glow circle inside */
+  overflow: hidden !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .aboutSection::before {
   content: "";
   position: absolute;
-  top: -100px; /* Shifted so it stays inside bounds */
+  top: -100px;
   right: -100px;
   width: 500px;
   height: 500px;
@@ -29,24 +31,22 @@
   z-index: 1;
 }
 
-/* FIX 1: Explicitly ensure full width centering */
 .container {
   width: 100%;
-  max-width: 1380px;
+  max-width: 1280px;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-/* FIX 2: Balance the columns equally (1fr 1fr) so text doesn't push left */
+/* Grid Layout */
 .contentGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Equal 50/50 balance */
+  grid-template-columns: 1fr 1fr;
   gap: clamp(2.5rem, 5vw, 5rem);
   align-items: center;
   width: 100%;
 }
 
-/* Left Column */
 .details {
   display: flex;
   flex-direction: column;
@@ -82,8 +82,8 @@
 
 .heading {
   margin: 0;
-  font-size: clamp(2rem, 3.2vw, 3.2rem);
-  line-height: 1.12;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.2;
   font-weight: 700;
   color: var(--text-main);
   letter-spacing: -0.02em;
@@ -96,7 +96,6 @@
   line-height: 1.7;
 }
 
-/* Story Blocks */
 .storyBlocks {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -105,34 +104,33 @@
 }
 
 .storyCard {
-  padding: 1.4rem;
-  border-radius: 16px;
+  padding: 1.25rem;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s var(--nav-ease);
 }
 
 .storyCard:hover {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.04);
   border-color: rgba(212, 175, 55, 0.3);
 }
 
 .storyCard h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--gold-vivid);
-  letter-spacing: 0.02em;
 }
 
 .storyCard p {
-  margin: 0.6rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 0.875rem;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
-/* FIX 3: Ensure visual image frame fills its half cleanly */
+/* Visual Column */
 .visuals {
   position: relative;
   display: flex;
@@ -144,15 +142,14 @@
 
 .imageFramePrimary {
   position: relative;
-  width: 100%; /* Fill column width naturally */
-  max-width: 520px; /* Cap size so it stays proportional */
-  height: 380px;
+  width: 100%;
+  max-width: 520px;
+  height: 400px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   background-color: #12151B;
-  transform: translateY(-20px);
 }
 
 .image {
@@ -163,20 +160,18 @@
 }
 
 .imageFramePrimary:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .imageOverlay {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(10, 12, 15, 0) 60%, rgba(10, 12, 15, 0.5) 100%);
+  background: rgba(255, 255, 255, 0.03);
 }
-
 .goldCornerTL {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  left: 12px;
   width: 14px;
   height: 14px;
   border-color: var(--gold-vivid);
@@ -186,256 +181,430 @@
   z-index: 3;
 }
 
-/* Stats Row */
+/* STATS SECTION */
 .statsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 4.5rem;
   width: 100%;
+  
+  /* Off-White Outer Container Styling */
+  padding: 2.5rem 2rem;
+  background-color: #e0dfdd; /* Luxury Warm Off-White / Alabaster */
+  border-radius: 24px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .statCard {
-  padding: 1.5rem 1.75rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 2px solid var(--gold-primary);
+  position: relative;
+  padding: 1.8rem;
+  /* Card fill slightly lighter/contrasting off-white */
+  background: #f6f2f2; 
+  border: 1px solid #EAE8E1;
   border-radius: 16px;
-  transition: all 0.3s var(--nav-ease);
-}
-
-.statCard:hover {
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.statHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.statValue {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--text-main);
-  line-height: 1;
-}
-
-.statAccentLine {
-  width: 24px;
-  height: 2px;
-  background: var(--gold-gradient);
-  border-radius: 2px;
-}
-
-.statLabel {
-  margin: 0.6rem 0 0 0;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-/* Timeline Roadmap Section */
-.timelineWrapper {
-  margin-top: 5rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  width: 100%;
-}
-
-.timelineHeader {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.timelineTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-vivid);
-  white-space: nowrap;
-}
-
-.timelineTrackLine {
-  position: relative;
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-}
-
-.timelineProgressGlow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.8), rgba(242, 210, 114, 0.2));
-  transform-origin: left;
-}
-
-.timelineGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  width: 100%;
-}
-
-.timelineItem {
-  position: relative;
-  padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
   transition: all 0.35s var(--nav-ease);
 }
 
-.timelineItem:hover {
-  border-color: rgba(212, 175, 55, 0.4);
-  background: rgba(255, 255, 255, 0.035);
+.statCard:hover {
+  border-color: #C5A059;
+  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.15);
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
-
-.mobileConnectorLine {
-  display: none;
-}
-
-.yearNode {
+.statTopRow {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
 }
 
-.nodeDot {
-  position: relative;
-  display: inline-block;
+.statValue {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #C5A059; /* Warm Gold for high contrast on light bg */
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.goldBadgeIndicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--gold-vivid);
-  box-shadow: 0 0 8px var(--gold-vivid);
+  background: #C5A059;
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.4);
+}
+.statLabel {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A1D20; /* Dark text for readability on off-white */
 }
 
-.nodePulse {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid var(--gold-vivid);
-  animation: pulseGlow 2.5s infinite ease-in-out;
-  opacity: 0.6;
-}
-.entryTitle {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-muted);
+.statDesc {
+  margin: 0.4rem 0 0 0;
+  font-size: 0.85rem;
+  color: #555E68; /* Subtitle text */
   line-height: 1.4;
 }
-@keyframes pulseGlow {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.6);
-    opacity: 0.1;
-  }
-  100% {
-    transform: scale(0.8);
-    opacity: 0.8;
-  }
+
+/* =========================================================
+   PREMIUM JOURNEY / TIMELINE SECTION (WHITE BACKGROUND)
+   ========================================================= */
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
-.yearText {
-  font-size: 0.95rem;
+.journeySection {
+  position: relative;
+  width: 100%;
+  background-color: #FDFCFA;
+  padding: 2rem 2rem 4.5rem 2rem;
+  color: #1A1D20;
+  overflow: hidden;
+}
+
+.journeySection::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.journeyHeader {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1rem;
+  z-index: 1;
+}
+
+.kickerRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-bottom: 0.85rem;
+}
+
+.kickerLine {
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C5A059);
+}
+
+.kickerLine:last-child {
+  background: linear-gradient(90deg, #C5A059, transparent);
+}
+
+.journeySubLabel {
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--gold-vivid);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C5A059;
 }
 
-.entryTitle {
-  margin: 0;
-  /* font-size: 0.875rem; */
-  color: var(--text-muted);
-  line-height: 1.5;
+.journeyTitle {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1A1D20;
+  margin: 0 0 0.7rem 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.01em;
 }
 
-/* Responsive & Mobile Animations */
+.journeySubtitle {
+  margin: 0 auto;
+  max-width: 460px;
+  font-size: 1rem;
+  color: #555E68;
+  line-height: 1.6;
+}
+
+.timelineWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.milestonesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.25rem;
+  position: relative;
+}
+
+/* Golden axis line — sits at node vertical center (node = 48px, center = 24px) */
+.axisTrack {
+  position: absolute;
+  top: 24px;
+  left: 3%;
+  width: 94%;
+  height: 2px;
+  background: rgba(26, 29, 32, 0.08);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.axisProgress {
+  position: absolute;
+  top: 24px;
+  left: 3%;
+  width: 94%;
+  height: 3px;
+  background:#D4AF37;;
+  border-radius: 3px;
+  transform-origin: left center;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.65);
+  z-index: 2;
+}
+
+.milestoneItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+.nodeCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #FDFCFA;
+  border: 1.5px solid #C5A059;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #C5A059;
+  transition: transform 0.4s var(--nav-ease), box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+}
+
+.milestoneItem:hover .nodeCircle {
+  background: #C5A059;
+  color: #FDFCFA;
+  transform: scale(1.12);
+  box-shadow: 0 0 0 6px rgba(197, 160, 89, 0.14), 0 8px 20px rgba(197, 160, 89, 0.35);
+}
+
+.stem {
+  width: 1px;
+  height: 22px;
+  background: linear-gradient(180deg, rgba(197, 160, 89, 0.45), rgba(197, 160, 89, 0.1));
+}
+
+/* Card with animated rotating gold-gradient border */
+.milestoneCard {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 1.25rem;
+  border-radius: 18px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#FFFFFF, #FFFFFF) padding-box,
+    conic-gradient(from var(--angle), #C5A059 0deg, #F6DE9E 90deg, #C5A059 180deg, rgba(197,160,89,0.15) 270deg, #C5A059 360deg) border-box;
+  animation: rotateBorder 5s linear infinite;
+  box-shadow: 0 4px 18px rgba(26, 29, 32, 0.04);
+  transition: transform 0.35s var(--nav-ease), box-shadow 0.35s ease;
+}
+
+@keyframes rotateBorder {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.milestoneItem:hover .milestoneCard {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 40px rgba(197, 160, 89, 0.2);
+}
+
+.milestoneYear {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1A1D20;
+  font-family: Georgia, 'Times New Roman', serif;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   MOBILE RESPONSIVE STYLES (UNDER 1024px)
+   ========================================== */
+
 @media (max-width: 1024px) {
-  .contentGrid {
-    grid-template-columns: 1fr;
+  /* Container Padding */
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
+  .aboutSection {
+    padding: 3rem 0;
+  }
+
+  /* Main Content Layout: Stack Columns Vertically */
+  .contentGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* Headings & Text Alignment */
+  .heading {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .leadText {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Story Cards (Our Approach / Our Quality) */
+  .storyBlocks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .storyCard {
+    padding: 1.25rem;
+  }
+
+  /* Visual Showcase Image Frame */
   .visuals {
-    min-height: 380px;
+    width: 100%;
+    margin-top: 0.5rem;
   }
 
   .imageFramePrimary {
     width: 100%;
-    max-width: 100%;
-    height: 320px;
-    transform: none;
+    height: 280px; /* Adjust height appropriately for mobile screens */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
   }
 
-  .timelineGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .aboutSection {
-    padding: 3rem 1.25rem;
-  }
-
-  .storyBlocks {
-    grid-template-columns: 1fr;
-  }
-
+  /* Stats Section Grid: Stack on Mobile */
   .statsRow {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .statCard {
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .statValue {
+    font-size: 2.25rem;
+  }
+
+  /* Journey / Timeline Mobile Adjustments */
+  .journeySection {
+    padding: 3.5rem 0;
+  }
+
+  .journeyTitle {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .journeySubtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
   }
 
   .timelineWrapper {
-    margin-top: 3.5rem;
-    padding-top: 2rem;
-  }
-
-  .timelineHeader {
-    margin-bottom: 1.5rem;
-  }
-
-  .timelineTitle {
-    font-size: 1.2rem;
-  }
-
-  .timelineGrid {
-    grid-template-columns: 1fr;
-    gap: 2.8rem;
     position: relative;
-    padding-left: 0.75rem;
+    padding-left: 0;
   }
 
-  .timelineItem {
-    padding: 1.15rem 1.25rem;
-    border-left: 2px solid rgba(212, 175, 55, 0.4);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.01) 100%);
-    backdrop-filter: blur(8px);
+  .milestonesGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    position: relative;
   }
 
-  .timelineItem:active {
-    background: rgba(212, 175, 55, 0.06);
-    border-left-color: var(--gold-vivid);
+  /* Hide horizontal line markers on mobile and convert to vertical stack */
+  .axisTrack,
+  .axisProgress,
+  .stem {
+    display: none;
   }
 
-  .entryTitle {
+  .milestoneItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .nodeCircle {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .milestoneCard {
+    flex: 1;
+    padding: 1.25rem;
+  }
+
+  .milestoneYear {
+    font-size: 1.25rem;
+  }
+
+  .milestoneDesc {
     font-size: 0.9rem;
-    color: #E2E8F0;
+    line-height: 1.5;
+  }
+}
+
+/* Extra Small Screens (Phones under 480px) */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .imageFramePrimary {
+    height: 220px;
+  }
+
+  .nodeCircle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
   }
 }

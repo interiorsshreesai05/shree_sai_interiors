@@ -90,10 +90,7 @@ export default function Portfolio() {
                   />
                   <div className={styles.imageOverlay} />
                   
-                  <a href={`#${projects[currentIndex].id}`} className={styles.viewBadge}>
-                    <span>Explore Space</span>
-                    <ArrowUpRight size={16} />
-                  </a>
+              
                 </div>
 
                 {/* Project Information */}

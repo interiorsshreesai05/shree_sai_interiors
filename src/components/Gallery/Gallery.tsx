@@ -15,19 +15,19 @@ const galleryImages = [
   },
   {
     id: 2,
-    src: "/Homepage.png",
+    src: "/AmbientLight.jpeg",
     title: "Ambient Brass Lighting",
     category: "Dining Suite",
   },
   {
     id: 3,
-    src: "/03.png",
+    src: "/CustomWood.jpeg",
     title: "Custom Wood Joinery",
     category: "Master Suite",
   },
   {
     id: 4,
-    src: "/04.png",
+    src: "/Wall.jpeg",
     title: "Textured Fluted Wall",
     category: "Executive Study",
   },

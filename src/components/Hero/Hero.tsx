@@ -2,13 +2,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
     <section className={styles.heroWrapper} id="home">
-      {/* Sharp High-Res Luxury Interior Image */}
+      {/* High-Res Luxury Interior Image */}
       <div className={styles.heroBgImage} />
 
       {/* Dark Gradient Overlay for Text Readability */}
@@ -16,8 +16,6 @@ export default function Hero() {
 
       {/* Hero Content Container */}
       <div className={styles.centerContainer}>
-
-        {/* Removed topBadge from here */}
 
         {/* Headline */}
         <motion.h1
@@ -41,7 +39,7 @@ export default function Hero() {
           jaw-dropping, fully customized physical sanctuaries.
         </motion.p>
 
-        {/* Action Buttons */}
+        {/* Action Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,25 +50,8 @@ export default function Hero() {
             <span>Book Design Consultation</span>
             <ArrowUpRight className={styles.btnIcon} />
           </a>
-
-          <a href="#portfolio" className={styles.secondaryGlassBtn}>
-            <Play className={styles.playIcon} />
-            <span>Watch Spatial Showcase</span>
-          </a>
         </motion.div>
 
-        {/* Bottom Tags Row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className={styles.bottomPillRow}
-        >
-          <span>Designed for</span>
-          <span className={styles.tagPill}>Luxury Villas</span>
-          <span>and</span>
-          <span className={styles.tagPill}>Bespoke Penthouses</span>
-        </motion.div>
       </div>
     </section>
   );

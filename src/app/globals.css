@@ -27,7 +27,6 @@
   padding: 0;
 }
 
-/* FIX: Prevent scrollbar layout shifts and center root container */
 html {
   scroll-behavior: smooth;
   width: 100%;
@@ -38,13 +37,12 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Keep only on body, NOT html */
+  overflow-x: hidden;
   background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 22%),
     linear-gradient(180deg, #070707 0%, #090909 58%, #0c0c0c 100%);
   color: var(--text);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Forces all main wrappers to true center */
 }
 
 ::selection {
