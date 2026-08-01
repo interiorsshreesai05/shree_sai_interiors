@@ -31,6 +31,19 @@ const galleryImages = [
     title: "Textured Fluted Wall",
     category: "Executive Study",
   },
+  // --- ADD YOUR 5TH IMAGE HERE ---
+  {
+    id: 5,
+    src: "/Galley5.jpeg", // Replace with your image file name
+    title: "Bespoke Accent Detail", // Replace with your title
+    category: "Outdoor Terrace", // Replace with your category
+  },
+{
+    id: 6,
+    src: "/OutdoorL.png",
+    title: "Architectural Bronze Entry",
+    category: "Foyer Gallery",
+  },
 ];
 
 // Duplicate items to ensure seamless infinite looping on mobile marquee
@@ -104,7 +117,7 @@ export default function Gallery() {
                         <div className={styles.metaRow}>
                           <span className={styles.categoryPill}>{item.category}</span>
                           <div className={styles.arrowIcon}>
-                            <ArrowUpRight size={14} />
+                            
                           </div>
                         </div>
                         <h3 className={styles.expandedTitle}>{item.title}</h3>

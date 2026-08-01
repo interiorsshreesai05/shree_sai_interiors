@@ -105,7 +105,7 @@ export default function Services() {
             <span className={styles.sectionLabel}>Services</span>
           </div>
           <h2 className={styles.heading}>
-            Luxury design services tailored for every scale of interior project.
+           Luxury interior design, customized for projects of every scale
           </h2>
         </motion.div>
 
