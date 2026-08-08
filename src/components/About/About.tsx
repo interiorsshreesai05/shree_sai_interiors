@@ -7,16 +7,16 @@ import styles from "./About.module.css";
 
 // Stats Data
 const facts = [
-  { value: "50+", label: "Projects Completed", description: "Villas, apartments & commercial spaces" },
-  { value: "10+", label: "Years Experience", description: "Delivering luxury interior design" },
-  { value: "95%", label: "Happy Clients", description: "Built on trust and repeat referrals" },
+  { value: "350+", label: "Projects Completed", description: "Villas, apartments & commercial spaces" },
+  { value: "16+", label: "Years Experience", description: "Delivering luxury interior design" },
+  { value: "97%", label: "Happy Clients", description: "Built on trust and repeat referrals" },
 ];
 
 // Timeline Data
 const timeline = [
-  { year: "2014", description: "Founded with a passion for quality interior design" },
-  { year: "2018", description: "Completed our first luxury villa project" },
-  { year: "2021", description: "Expanded to full end-to-end design & execution" },
+  { year: "2010", description: "Founded with a passion for quality interior design" },
+  { year: "2015", description: "Completed our first major residential project" },
+  { year: "2020", description: "Expanded our expertise across residential and commercial interiors" },
   { year: "2026", description: "Recognized as a leading luxury interior studio" },
 ];
 

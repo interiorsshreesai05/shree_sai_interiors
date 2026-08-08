@@ -7,20 +7,21 @@ import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import styles from "./Portfolio.module.css";
 
 const projects = [
-  {
-    id: "horizon-house",
-    title: "Horizon House Residence",
-    category: "Residential",
-    location: "Mumbai",
-    image: "/03.png",
-    description: "A sanctuary of natural textures, ambient light, and tailored spatial planning designed for modern architectural calm.",
+{
+    id: "serenity-healthcare", // <-- Unique ID
+    title: "Serenity Wellness Institute", // <-- Premium Hospital Title
+    category: "Healthcare", // <-- Healthcare category
+    location: "Chandigarh", // <-- Your Chandigarh location
+    // *** PLACE 2: ADD THE HOSPITAL IMAGE FILENAME HERE ***
+    image: "/Hospital.png", 
+    description: "A calming healing environment prioritized by light teak wood textures, natural daylight, and bespoke medical signage integration.", // <-- Specialized description
   },
   {
     id: "boutique-lounge",
     title: "Boutique Lounge",
     category: "Hospitality",
     location: "Pune",
-    image: "/04.png",
+    image: "/Hotel.png",
     description: "An intimate dining setting blending mood lighting with rich marble finishes and acoustic warmth.",
   },
   {
@@ -36,7 +37,7 @@ const projects = [
     title: "Luxury Fine Jewelry Gallery",
     category: "Retail",
     location: "Delhi",
-    image: "/03.png",
+    image: "/Gallary.png",
     description: "A museum-quality retail gallery showcasing bespoke linear lighting and handcrafted brass detailing.",
   },
 ];

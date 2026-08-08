@@ -63,11 +63,11 @@ export default function Footer() {
             <div className={styles.contactList}>
               <div className={styles.contactItem}>
                 <Phone size={18} className={styles.icon} />
-                <span>+91 98765 43210</span>
+                <span>+91 9168268068</span>
               </div>
               <div className={styles.contactItem}>
                 <Mail size={18} className={styles.icon} />
-                <span>info@shreesainteriors.com</span>
+                <span>interiorsshreesai05@gmail.com</span>
               </div>
               <div className={styles.contactItem}>
                 <MapPin size={18} className={styles.icon} />

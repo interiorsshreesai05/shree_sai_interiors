@@ -30,7 +30,7 @@ const services = [
     description:
       "High-quality interior and exterior painting services with flawless finishes and long-lasting premium coatings.",
     image:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
+      "/Painting.png",
     highlights: ["Royal Velvet Finish", "Anti-Fungal Exterior Coat", "Texture & Stencil Design"],
     badge: "Essential"
   },
@@ -48,7 +48,7 @@ const services = [
     description:
       "Custom-designed modular furniture crafted with premium materials for functionality and timeless aesthetics.",
     image:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      "/Furniture.png",
     highlights: ["Modular Kitchens & Wardrobes", "Ergonomic Layouts", "Soft-Close German Fittings"],
     badge: "Bespoke"
   },
