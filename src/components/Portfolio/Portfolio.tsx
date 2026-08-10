@@ -40,6 +40,22 @@ const projects = [
     image: "/Gallary.png",
     description: "A museum-quality retail gallery showcasing bespoke linear lighting and handcrafted brass detailing.",
   },
+  {
+    id: "private-residence",
+    title: "Modern Minimalist Villa",
+    category: "Residential",
+    location: "Mumbai",
+    image: "/Resendential.png", 
+    description: "A sanctuary designed with warm neutral palettes, open spatial layouts, and custom oak paneling.",
+  },
+  {
+    id: "speciality-clinic",
+    title: "Aesthetic & Wellness Clinic",
+    category: "Clinic",
+    location: "Chandigarh",
+    image: "/Clinick.png", // Replace with your image file name in /public
+    description: "An ultra-clean clinical design balancing modern sanitation standards with tranquil interior aesthetics.",
+  },
 ];
 
 export default function Portfolio() {

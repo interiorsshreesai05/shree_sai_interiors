@@ -54,7 +54,8 @@ export default function Contact() {
                   <Mail size={15} />
                   <span>Email</span>
                 </div>
-                <p>hello@shreesaiinteriors.com</p>
+                <p>interiorsshreesai05@gmail.com
+</p>
               </div>
               
               <div className={styles.metaCard}>
@@ -62,7 +63,7 @@ export default function Contact() {
                   <Phone size={15} />
                   <span>Phone</span>
                 </div>
-                <p>+91 98765 43210</p>
+                <p>+91 9168268068</p>
               </div>
             </div>
 
