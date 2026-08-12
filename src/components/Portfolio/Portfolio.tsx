@@ -37,7 +37,7 @@ const projects = [
     title: "Luxury Fine Jewelry Gallery",
     category: "Retail",
     location: "Delhi",
-    image: "/Gallary.png",
+    image: "/Jwellary.png",
     description: "A museum-quality retail gallery showcasing bespoke linear lighting and handcrafted brass detailing.",
   },
   {
