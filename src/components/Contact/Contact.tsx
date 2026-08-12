@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, Sparkles, Mail, Phone, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, Sparkles, Mail, Phone, Loader2, MapPin, ExternalLink } from "lucide-react";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
@@ -54,8 +54,7 @@ export default function Contact() {
                   <Mail size={15} />
                   <span>Email</span>
                 </div>
-                <p>interiorsshreesai05@gmail.com
-</p>
+                <p>interiorsshreesai05@gmail.com</p>
               </div>
               
               <div className={styles.metaCard}>
@@ -182,11 +181,24 @@ export default function Contact() {
           </motion.form>
         </div>
 
-        {/* Custom Map Container */}
+        {/* Custom Map Container with Exact Red Pin & Direct Link */}
         <div className={styles.mapPlaceholder}>
+          <a
+            href="https://maps.app.goo.gl/wQT6mqYyXBj6KamU9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.mapOverlayLink}
+            title="Open location in Google Maps"
+          >
+            <span className={styles.mapBadge}>
+              <MapPin size={14} className={styles.pinIcon} />
+              <span>Shree Sai Interiors</span>
+              <ExternalLink size={12} />
+            </span>
+          </a>
           <iframe
             title="Studio Location Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119981.26418721735!2d73.72107883395982!3d20.01103080000001!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb0e911293a9%3A0xe2f357f892a06f34!2sNashik%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            src="https://maps.google.com/maps?q=20.0048684,73.7621415&hl=en&z=16&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

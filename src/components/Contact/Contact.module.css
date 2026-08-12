@@ -11,10 +11,8 @@
   padding: clamp(6rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
   max-width: 1200px;
   margin: 0 auto;
-
-     padding-top: 40px;
+  padding-top: 40px;
   margin-top: -10px;
-  
 }
 
 .container {
@@ -40,7 +38,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3.5rem;
-  align-items: stretch; /* Stretches cards equally */
+  align-items: stretch;
   z-index: 1;
 }
 
@@ -234,7 +232,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Full width button fixes empty bottom right space */
+  width: 100%;
   margin-top: 0.5rem;
   padding: 1rem 1.75rem;
   border-radius: 999px;
@@ -284,8 +282,51 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
+/* Native map display to keep the Google red drop pin clear & sharp */
 .mapIframe {
-  filter: grayscale(100%) invert(92%) contrast(83%);
+  filter: none;
+}
+
+/* Map Overlay Button */
+.mapOverlayLink {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  text-decoration: none;
+}
+
+.mapBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  background: rgba(18, 21, 27, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 169, 98, 0.4);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.pinIcon {
+  color: #e53e3e;
+}
+
+.mapOverlayLink:hover .mapBadge {
+  background: var(--gold-primary);
+  color: #0d1015;
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 169, 98, 0.4);
+}
+
+.mapOverlayLink:hover .pinIcon {
+  color: #0d1015;
 }
 
 /* Responsive Media Queries */
