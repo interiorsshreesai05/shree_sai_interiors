@@ -214,7 +214,7 @@ export default function Contact() {
           </a>
           <iframe
             title="Studio Location Map"
-            src="https://maps.google.com/maps?q=20.0048684,73.7621415&hl=en&z=17&t=k&output=embed"
+           src="https://maps.google.com/maps?q=19.976444,73.836333&hl=en&z=17&t=k&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
