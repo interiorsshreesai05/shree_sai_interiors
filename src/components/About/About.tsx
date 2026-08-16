@@ -169,7 +169,7 @@ export default function About() {
             >
               <div className={styles.imageFramePrimary}>
                 <Image
-                  src="/AbtouImage.png"
+                  src="/abtouimage.png"
                   alt="Modern interior design showcase"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

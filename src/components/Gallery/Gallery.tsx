@@ -21,26 +21,26 @@ const galleryImages = [
   },
   {
     id: 3,
-    src: "/CustomWood.jpeg",
+    src: "/customwood.jpeg",
     title: "Custom Wood Joinery",
     category: "Master Suite",
   },
   {
     id: 4,
-    src: "/Wall.jpeg",
+    src: "/wall.jpeg",
     title: "Textured Fluted Wall",
     category: "Executive Study",
   },
   // --- ADD YOUR 5TH IMAGE HERE ---
   {
     id: 5,
-    src: "/Galley5.jpeg", // Replace with your image file name
+    src: "/galley5.jpeg", // Replace with your image file name
     title: "Bespoke Accent Detail", // Replace with your title
     category: "Outdoor Terrace", // Replace with your category
   },
 {
     id: 6,
-    src: "/OutdoorL.png",
+    src: "/outdoorl.png",
     title: "Architectural Bronze Entry",
     category: "Foyer Gallery",
   },
