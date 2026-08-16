@@ -197,8 +197,41 @@ export default function Contact() {
           </motion.form>
         </div>
 
-        {/* Custom Map Container with Default Satellite View */}
-        <div className={styles.mapPlaceholder}>
+        {/* Map Container linked directly to your exact Google Maps shared pin location */}
+        <div className={styles.mapPlaceholder} style={{ position: 'relative' }}>
+          
+          {/* Custom Google-style Floating Marker Tag positioned right over the exact pin */}
+          <div style={{
+            position: 'absolute',
+            top: '44%',
+            left: '50%',
+            transform: 'translate(-50%, -100%)',
+            zIndex: 10,
+            pointerEvents: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            filter: 'drop-shadow(0px 4px 12px rgba(0,0,0,0.4))'
+          }}>
+            <div style={{
+              background: '#1a1a1a',
+              color: '#ffffff',
+              padding: '6px 12px',
+              borderRadius: '6px',
+              fontSize: '13px',
+              fontWeight: 600,
+              whiteSpace: 'nowrap',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              marginBottom: '4px'
+            }}>
+              <span style={{ width: '8px', height: '8px', backgroundColor: '#d4af37', borderRadius: '50%', display: 'inline-block' }}></span>
+              ShreeSai Interiors
+            </div>
+          </div>
+
           <a
             href="https://maps.app.goo.gl/wQT6mqYyXBj6KamU9"
             target="_blank"
@@ -208,13 +241,14 @@ export default function Contact() {
           >
             <span className={styles.mapBadge}>
               <MapPin size={14} className={styles.pinIcon} />
-              <span>Shree Sai Interiors</span>
+              <span>ShreeSai Interiors</span>
               <ExternalLink size={12} />
             </span>
           </a>
+
           <iframe
             title="Studio Location Map"
-           src="https://maps.google.com/maps?q=19.976444,73.836333&hl=en&z=17&t=k&output=embed"
+            src="https://maps.google.com/maps?q=19.976444,73.836333&hl=en&z=17&t=k&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
