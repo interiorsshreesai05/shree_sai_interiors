@@ -197,7 +197,7 @@ export default function Contact() {
           </motion.form>
         </div>
 
-        {/* Custom Map Container with Exact Red Pin & Direct Link */}
+        {/* Custom Map Container with Default Satellite View */}
         <div className={styles.mapPlaceholder}>
           <a
             href="https://maps.app.goo.gl/wQT6mqYyXBj6KamU9"
@@ -214,7 +214,7 @@ export default function Contact() {
           </a>
           <iframe
             title="Studio Location Map"
-            src="https://maps.google.com/maps?q=20.0048684,73.7621415&hl=en&z=16&output=embed"
+            src="https://maps.google.com/maps?q=20.0048684,73.7621415&hl=en&z=17&t=k&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
