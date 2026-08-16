@@ -32,9 +32,9 @@ export default function Footer() {
               Complete Interior & Turnkey Solutions for Residential and Commercial Spaces.
             </p>
             <div className={styles.socialIcons}>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={16} /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={16} /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={16} /></a>
+              <a href="https://www.facebook.com/profile.php?id=61592183887632" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={16} /></a>
+              <a href="https://www.instagram.com/shreesai.interiors?igsh=MWltZWR5bmY4cHNwYQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={16} /></a>
+             
             </div>
           </div>
 
@@ -81,7 +81,7 @@ export default function Footer() {
               <div className={styles.contactItem}>
                 <a href={mapsQueryUrl} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "8px", color: "inherit", textDecoration: "none" }}>
                   <MapPin size={18} className={styles.icon} />
-                  <span>Shree Sai Business Group, Nashik, Maharashtra - 422001</span>
+                  <span>Shree Sai Business Group, 2nd floor dusane golden bricks, narayan bapu nagar, jail road, nashik road, nashik</span>
                 </a>
               </div>
               <div className={styles.contactItem}>
