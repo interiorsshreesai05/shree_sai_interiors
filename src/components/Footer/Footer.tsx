@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -34,6 +34,7 @@ export default function Footer() {
             <div className={styles.socialIcons}>
               <a href="https://www.facebook.com/profile.php?id=61592183887632" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={16} /></a>
               <a href="https://www.instagram.com/shreesai.interiors?igsh=MWltZWR5bmY4cHNwYQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={16} /></a>
+              <a href="https://x.com/SSaiInteriors" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><FaXTwitter size={16} /></a>
               <a href={`https://wa.me/${whatsappNumber}?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20your%20services.`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><FaWhatsapp size={16} /></a>
             </div>
           </div>
