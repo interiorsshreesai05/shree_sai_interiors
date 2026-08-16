@@ -60,8 +60,8 @@
 }
 
 .brandLogo {
-  width: 98px;
-  height: 98px;
+  width: 120px;
+  height: 130px;
   object-fit: contain;
   mix-blend-mode: screen;
   filter: brightness(1.2) drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));

@@ -9,6 +9,10 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const phoneNumber = "+919168268068";
+  const emailAddress = "interiorsshreesai05@gmail.com";
+  const whatsappNumber = "919168268068";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -54,7 +58,11 @@ export default function Contact() {
                   <Mail size={15} />
                   <span>Email</span>
                 </div>
-                <p>interiorsshreesai05@gmail.com</p>
+                <p>
+                  <a href={`mailto:${emailAddress}`} style={{ color: "inherit", textDecoration: "none" }}>
+                    interiorsshreesai05@gmail.com
+                  </a>
+                </p>
               </div>
               
               <div className={styles.metaCard}>
@@ -62,7 +70,15 @@ export default function Contact() {
                   <Phone size={15} />
                   <span>Phone</span>
                 </div>
-                <p>+91 9168268068</p>
+                <p>
+                  <a href={`tel:${phoneNumber}`} style={{ color: "inherit", textDecoration: "none" }}>
+                    +91 9168268068
+                  </a>
+                  {" / "}
+                  <a href={`https://wa.me/${whatsappNumber}?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20your%20services.`} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>
+                    WhatsApp
+                  </a>
+                </p>
               </div>
             </div>
 

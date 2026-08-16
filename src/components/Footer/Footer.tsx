@@ -3,6 +3,11 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
+  const phoneNumber = "+919168268068";
+  const emailAddress = "interiorsshreesai05@gmail.com";
+  const whatsappNumber = "919168268068";
+  const mapsQueryUrl = "https://www.google.com/maps/place/19%C2%B058'35.2%22N+73%C2%B050'10.8%22E/@19.9764412,73.8337687,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.9764412!4d73.8363436!18m1!1e1?entry=ttu";
+
   return (
     <footer className={styles.footerSection}>
       {/* Dark Overlay for Readability */}
@@ -27,9 +32,9 @@ export default function Footer() {
               Complete Interior & Turnkey Solutions for Residential and Commercial Spaces.
             </p>
             <div className={styles.socialIcons}>
-              <a href="#" aria-label="Facebook"><FaFacebookF size={16} /></a>
-              <a href="#" aria-label="Instagram"><FaInstagram size={16} /></a>
-              <a href="#" aria-label="LinkedIn"><FaLinkedinIn size={16} /></a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={16} /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={16} /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={16} /></a>
             </div>
           </div>
 
@@ -62,20 +67,28 @@ export default function Footer() {
             <p className={styles.linkHeading}>Contact Us</p>
             <div className={styles.contactList}>
               <div className={styles.contactItem}>
-                <Phone size={18} className={styles.icon} />
-                <span>+91 9168268068</span>
+                <a href={`tel:${phoneNumber}`} style={{ display: "flex", alignItems: "center", gap: "8px", color: "inherit", textDecoration: "none" }}>
+                  <Phone size={18} className={styles.icon} />
+                  <span>+91 9168268068</span>
+                </a>
               </div>
               <div className={styles.contactItem}>
-                <Mail size={18} className={styles.icon} />
-                <span>interiorsshreesai05@gmail.com</span>
+                <a href={`mailto:${emailAddress}`} style={{ display: "flex", alignItems: "center", gap: "8px", color: "inherit", textDecoration: "none" }}>
+                  <Mail size={18} className={styles.icon} />
+                  <span>interiorsshreesai05@gmail.com</span>
+                </a>
               </div>
               <div className={styles.contactItem}>
-                <MapPin size={18} className={styles.icon} />
-                <span>123, ABC Road, Nashik, Maharashtra - 422001</span>
+                <a href={mapsQueryUrl} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "8px", color: "inherit", textDecoration: "none" }}>
+                  <MapPin size={18} className={styles.icon} />
+                  <span>Shree Sai Business Group, Nashik, Maharashtra - 422001</span>
+                </a>
               </div>
               <div className={styles.contactItem}>
-                <Clock size={18} className={styles.icon} />
-                <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
+                <a href={`https://wa.me/${whatsappNumber}?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20your%20services.`} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "8px", color: "inherit", textDecoration: "none" }}>
+                  <Clock size={18} className={styles.icon} />
+                  <span>Mon - Sat: 9:30 AM - 6:30 PM (WhatsApp Us)</span>
+                </a>
               </div>
             </div>
           </div>
