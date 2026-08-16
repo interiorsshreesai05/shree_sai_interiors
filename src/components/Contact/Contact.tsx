@@ -10,7 +10,7 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const phoneNumber = "+919168268068";
-  const emailAddress = "interiorsshreesai05@gmail.com";
+  const emailAddress = "info@interiorsshreesai.com";
   const whatsappNumber = "919168268068";
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -60,7 +60,7 @@ export default function Contact() {
                 </div>
                 <p>
                   <a href={`mailto:${emailAddress}`} style={{ color: "inherit", textDecoration: "none" }}>
-                    interiorsshreesai05@gmail.com
+                    info@interiorsshreesai.com
                   </a>
                 </p>
               </div>
