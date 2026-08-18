@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 
 export default function Footer() {
   const phoneNumber = "+919168268068";
-  const emailAddress = "info@interiorsshreesai.com";
+  const emailAddress = "info@shreesaiinteriors.in";
   const whatsappNumber = "919168268068";
   const mapsQueryUrl = "https://www.google.com/maps/place/19%C2%B058'35.2%22N+73%C2%B050'10.8%22E/@19.9764412,73.8337687,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.9764412!4d73.8363436!18m1!1e1?entry=ttu";
 
@@ -76,7 +76,7 @@ export default function Footer() {
               <div className={styles.contactItem}>
                 <a href={`mailto:${emailAddress}`} style={{ display: "flex", alignItems: "center", gap: "8px", color: "inherit", textDecoration: "none" }}>
                   <Mail size={18} className={styles.icon} />
-                  <span>info@interiorsshreesai.com</span>
+                  <span>info@shreesaiinteriors.in</span>
                 </a>
               </div>
               <div className={styles.contactItem}>
